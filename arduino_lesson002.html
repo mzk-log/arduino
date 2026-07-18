@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小学生のためのArduinoプログラミング講座 - 第1回</title>
+    <title>小学生のためのArduinoプログラミング講座 - 第2回</title>
     <style>
         :root {
             --primary-color: #007acc;
@@ -134,10 +134,10 @@
 
     <h1>小学生のためのArduinoプログラミング講座</h1>
     
-    <h2>第1回：パソコンの画面にメッセージを出してみよう！</h2>
+    <h2>第2回：プログラムの２つの行事（朝の会 と 授業）</h2>
 
     <h3>1. テーマ</h3>
-    <p>パソコンからArduino（アルドゥイーノ）へ文字データを送り、Arduinoがそれを受け取って、パソコンの画面にメッセージを表示する仕組みを学びます。</p>
+    <p>Arduinoのプログラムには、<strong>最初に1回だけ動く関数</strong>と、<strong>そのあとずっとくり返す関数</strong>の2つがあります。それぞれの中に書いた文字データが、パソコンのシリアルモニタへどのように送られるかを学びます。</p>
 
     <h3>2. 今回覚えること</h3>
     <div class="intro-box">
@@ -145,26 +145,31 @@
         <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
     </div>
     <ul>
-        <li><strong>関数（かんすう）：</strong> 特定の仕事をまとめて実行するために、あらかじめ用意されている仕組みのこと。</li>
-        <li><strong>void（ボイド）：</strong> 「空っぽ（何も返さない）」という意味の言葉。</li>
-        <li><strong>文字列（もじれつ）：</strong> <code>"</code> と <code>"</code> で囲まれた、ただの「文章・メッセージ」データのこと。</li>
-        <li><strong>セミコロン（ <code>;</code> ）：</strong> 処理の区切りにつける、日本語の「。」にあたる記号。</li>
+        <li><strong>setup（セットアップ）：</strong> 電源が入ったあと、<strong>最初に1回だけ</strong>実行される特別な関数。学校の「朝の会」にあたります。</li>
+        <li><strong>loop（ループ）：</strong> <code>setup</code> が終わったあと、<strong>無限にくり返し</strong>実行される特別な関数。学校の「授業」にあたります。</li>
+        <li><strong>実行（じっこう）：</strong> プログラムに書かれた仕事を、コンピューターが実際に動かすこと。</li>
+        <li><strong>くり返し：</strong> 同じ処理を、終わることなく何度も行うこと。</li>
     </ul>
 
     <h3>3. 事前解説</h3>
-    <p>プログラミングは、コンピューターに対して実行してほしい仕事を順番に書いていく作業です。この仕事のまとまりのことをプログラミングの世界では<strong>「関数（かんすう）」</strong>と呼びます。</p>
-    <p>Arduinoのプログラムには、最初から必ず <strong><code>setup（セットアップ）</code></strong> と <strong><code>loop（ループ）</code></strong> という名前の「２つの特別な関数」を書くルールになっています。</p>
-    <p>関数は仕事を終えると、たまに「計算結果の数字」などを返してくれることがありますが、<code>setup</code> と <code>loop</code> は仕事をやり遂げるだけで、何も結果を返しません。そのため、「この関数は何も返さないよ（空っぽだよ）」ということをコンピューターに教えるために、頭に <strong><code>void（ボイド）</code></strong> という言葉をつけます。</p>
-    <p>また、今回は画面に文字を表示させるために、すでに準備されている <strong><code>Serial.begin</code></strong> や <strong><code>Serial.println</code></strong> という関数も使います。画面に文字を表示するときは、データとして「これはプログラムの英語じゃなくて、ただの文章（文字列）だよ」と教えてあげる必要があります。そのため、画面に出したい日本語は <strong><code>"こんにちは"</code></strong> のように、必ず <code>"</code>（ダブルクォーテーション）という記号で挟むルールになっています。</p>
+    <p>学校の1日を思い浮かべてみましょう。朝はまず<strong>「朝の会」</strong>があります。朝の会は、その日の最初に<strong>1回だけ</strong>行われます。朝の会が終わると、あとは<strong>「授業」</strong>が続きます。授業は、時間割のあいだずっとくり返されます。</p>
+    <p>Arduinoのプログラムも、これと同じ2つの行事でできています。</p>
+    <ul>
+        <li><strong><code>void setup()</code></strong> ＝ 朝の会（最初に1回だけ）</li>
+        <li><strong><code>void loop()</code></strong> ＝ 授業（朝の会のあと、ずっとくり返す）</li>
+    </ul>
+    <p>第1回では、<code>setup</code>（朝の会）の中だけにメッセージを書きました。今回は、<code>loop</code>（授業）の中にもメッセージを書いて、<strong>「1回だけ出る文字」と「何度も出る文字」のちがい</strong>を、シリアルモニタで確かめます。</p>
+    <p>なお、今回はまだ「待つ」命令（あとで学ぶ <code>delay</code>）を使わないので、<code>loop</code> の中の文字はとても速くくり返され、画面にたくさん並んで見えることがあります。それで正解です！</p>
 
     <h3>4. コード（プログラム）</h3>
     <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
 <pre><code>void setup() {
   Serial.begin(9600);
-  Serial.println("こんにちは");
+  Serial.println("朝の会：準備完了！");
 }
 
 void loop() {
+  Serial.println("授業：がんばっています");
 }</code></pre>
 
     <h3>5. 動かし方（手順）</h3>
@@ -195,39 +200,41 @@ void loop() {
 
     <div class="hint-box">
         <strong>🔍 確認しよう：</strong>
-        <p>シリアルモニタの画面に「こんにちは」とパッと表示されたら大成功です！</p>
+        <p>最初に「朝の会：準備完了！」が<strong>1回だけ</strong>出て、そのあと「授業：がんばっています」が<strong>ずっとくり返し</strong>出てきたら大成功です！</p>
     </div>
 
     <h3>6. コード解説</h3>
     <ul>
         <li><strong><code>void setup() { ... }</code></strong><br>
-        Arduinoの電源が入ったときに、上から順番に<strong>「最初の1回だけ」</strong>実行される特別な関数です。学校の「朝の会」のように、その日最初の準備をこの中でします。頭の <code>void</code> は「結果を返さない空っぽの関数」という意味です。</li>
+        Arduinoの電源が入ったときに、<strong>最初の1回だけ</strong>実行される特別な関数です。学校の「朝の会」にあたります。頭の <code>void</code> は「結果を返さない空っぽの関数」という意味です。</li>
         <li><strong><code>{</code> と <code>}</code> （なみカッコ）</strong><br>
-        この関数の仕事が「どこからどこまでなのか」という範囲を表す記号です。</li>
+        この関数の仕事が「どこからどこまでなのか」という範囲を表す記号です。<code>setup</code> にも <code>loop</code> にも、それぞれ1組ずつ必要です。</li>
         <li><strong><code>Serial.begin(9600);</code></strong><br>
-        パソコンとArduinoの間で、文字のやり取り（通信）ができるように準備を始める関数です。</li>
-        <li><strong><code>Serial.println("こんにちは");</code></strong><br>
-        「こんにちは」という文字列データを、パソコンの画面（シリアルモニタ）に向けて送り出し、表示させるための関数です。</li>
+        パソコンとArduinoの間で、文字のやり取り（通信）ができるように準備を始める関数です。朝の会（<code>setup</code>）の中で1回だけ行います。</li>
+        <li><strong><code>Serial.println("朝の会：準備完了！");</code></strong><br>
+        「朝の会：準備完了！」という文字列データを、シリアルモニタに表示する関数です。<code>setup</code> の中にあるので、<strong>1回だけ</strong>表示されます。</li>
         <li><strong><code>;</code> （セミコロン）</strong><br>
         「ここでひとつの処理が終わりです」という区切りの目印です。</li>
         <li><strong><code>void loop() { ... }</code></strong><br>
-        <code>setup</code>（朝の会）が終わったあとに、ずーっと無限に何度もくり返し実行される特別な関数です。学校の「授業（じゅぎょう）」にあたる場所です。今回はまだ中に何も処理が書かれていないので、空っぽのままくり返します。</li>
+        <code>setup</code>（朝の会）が終わったあとに、ずーっと無限にくり返し実行される特別な関数です。学校の「授業」にあたります。</li>
+        <li><strong><code>Serial.println("授業：がんばっています");</code></strong><br>
+        「授業：がんばっています」という文字列データを、シリアルモニタに表示する関数です。<code>loop</code> の中にあるので、<strong>何度もくり返し</strong>表示されます。</li>
     </ul>
 
     <h3>7. 練習問題</h3>
-    <p>プログラムを書き換えて、パソコンの画面に出る文字を「こんにちは」から、夜のあいさつの<strong>「こんばんは」</strong>に変えてみましょう。</p>
+    <p><code>loop</code>（授業）の中の文字を、<strong>「授業：がんばっています」</strong>から、<strong>「授業：計算の練習中」</strong>に変えてみましょう。書き込み直したあと、シリアルモニタで「朝の会」は1回、「授業」はくり返し出るか確認してください。</p>
 
     <h3>8. うまく動かないとき（エラー）のアクション</h3>
     <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
     
     <div class="error-list">
         <div class="error-item">
-            <span class="error-num">1.</span> <strong>セミコロン（ <code>;</code> ）を忘れていませんか？</strong><br>
-            <code>Serial.println("こんばんは")</code> の最後に <code>;</code> があるか確認してください。
+            <span class="error-num">1.</span> <strong><code>setup</code> と <code>loop</code> のなみカッコはそろっていますか？</strong><br>
+            <code>setup</code> 用の <code>{</code> <code>}</code> と、<code>loop</code> 用の <code>{</code> <code>}</code> が、それぞれ閉じているか確認してください。
         </div>
         <div class="error-item">
-            <span class="error-num">2.</span> <strong>記号が消えていませんか？</strong><br>
-            文字を挟む <code>"</code> と <code>"</code> 、関数を囲む <code>{</code> と <code>}</code> が、ちゃんと残っているか確認してください。
+            <span class="error-num">2.</span> <strong>セミコロン（ <code>;</code> ）を忘れていませんか？</strong><br>
+            <code>Serial.println(...)</code> の最後に <code>;</code> があるか確認してください。
         </div>
         <div class="error-item">
             <span class="error-num">3.</span> <strong>アルファベットは「半角（はんかく）」ですか？</strong><br>
@@ -236,7 +243,7 @@ void loop() {
     </div>
 
     <p style="text-align: center; margin-top: 40px; font-weight: bold;">
-        第1回のレッスンはここまでです。おつかれさまでした！
+        第2回のレッスンはここまでです。おつかれさまでした！
     </p>
 
 </body>
