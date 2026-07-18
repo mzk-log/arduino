@@ -228,8 +228,36 @@ pre code {
 .lesson-nav a:hover {
     background-color: #dceef9;
 }
+.comment-box {
+    margin: 36px 0 20px;
+    padding: 18px 20px;
+    background-color: var(--secondary-color);
+    border: 1px solid #b7d7ea;
+    border-radius: 8px;
+    text-align: center;
+}
+.comment-box p {
+    margin: 0 0 10px;
+}
+.comment-box p:last-child {
+    margin-bottom: 0;
+}
+.comment-btn {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 10px 18px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.comment-btn:hover {
+    background-color: #0062a3;
+}
 @media print {
     body { max-width: 100%; padding: 0; }
     .step-item { page-break-inside: avoid; }
     .lesson-nav { display: none; }
+    .comment-box { display: none; }
 }
