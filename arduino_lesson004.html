@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小・中学生のためのArduinoプログラミング講座 - 第4回</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>第4回：データをあずかる「魔法の箱」（変数）</h2>
+
+    <h3>1. テーマ</h3>
+    <p>数字などのデータを、名前のついた箱（変数）に入れておき、あとから取り出して画面に表示する方法を学びます。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>変数（へんすう）：</strong> データを入れておける、名前付きの箱。</li>
+        <li><strong>int（イント）：</strong> 整数（小数点のない数字）を入れるための型。</li>
+        <li><strong>型（かた）：</strong> 箱にどんな種類のデータを入れるかを決める印。</li>
+        <li><strong>初期化（しょきか）：</strong> 箱を作ったときに、最初の値を入れること。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>コンピューターは、数字や文字などの<strong>データ</strong>をあつかいます。データをしまっておく場所のことを、プログラミングでは<strong>変数（へんすう）</strong>と呼びます。</p>
+    <p>変数は「名前のついた魔法の箱」です。箱を作るときは、<strong>どんなデータを入れる箱か（型）</strong>と<strong>箱の名前</strong>を書きます。整数なら <code>int</code> を使います。</p>
+    <p>たとえば <code>int score = 10;</code> は、「score という名前の整数の箱を作り、最初に 10 を入れる」という意味です。箱の中身は <code>Serial.println(score);</code> で画面に出せます。</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>void setup() {
+  Serial.begin(9600);
+
+  int score = 10;
+  Serial.println("点数を箱に入れました");
+  Serial.println(score);
+}
+
+void loop() {
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。これは、プログラムに文字の間違いがないかをパソコンが自動で調べるボタンです。画面の下の方に「コンパイル完了」と出れば、間違いがないという証拠です！</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p>間違いがないことを確認したら、隣にある<strong>「右矢印（➔）のボタン」</strong>をクリックします。プログラムがArduinoへ送り込まれます。画面の下の方に「書き込みが完了しました」と出るまで少し待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / 確認</span>
+            <div class="step-title">シリアルモニタを開く</div>
+            <p>画面の右上にある<strong>「虫眼鏡（🔍）のボタン」</strong>をクリックして、シリアルモニタという新しい画面を開きます。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>「点数を箱に入れました」のあとに「10」と表示されたら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>void setup() { ... }</code></strong><br>朝の会。今回の処理はここで1回だけ行います。</li>
+        <li><strong><code>Serial.begin(9600);</code></strong><br>通信の準備です。</li>
+        <li><strong><code>int score = 10;</code></strong><br><code>int</code> 型の変数 <code>score</code> を作り、最初の値として 10 を入れます（初期化）。</li>
+        <li><strong><code>=</code> （イコール）</strong><br>ここでは「等しい」ではなく、「右の値を左の箱に入れる」という意味で使います。</li>
+        <li><strong><code>Serial.println("点数を箱に入れました");</code></strong><br>説明の文字列を表示します。</li>
+        <li><strong><code>Serial.println(score);</code></strong><br>変数 <code>score</code> の中身（10）を表示します。文字列ではないので <code>"</code> はつけません。</li>
+        <li><strong><code>;</code></strong><br>処理の区切りです。</li>
+        <li><strong><code>void loop() { }</code></strong><br>授業は今回空っぽです。</li>
+        <li><strong><code>{</code> と <code>}</code></strong><br>関数の範囲です。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p><code>int score = 10;</code> の数字を <strong>25</strong> に変えて、画面に「25」が出るか確かめてみましょう。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>変数の型と名前は半角ですか？</strong><br><code>int</code> や <code>score</code> が全角になっていないか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>セミコロンを忘れていませんか？</strong><br><code>int score = 10</code> の最後に <code>;</code> があるか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong><code>Serial.println(score);</code> に余計な <code>"</code> をつけていませんか？</strong><br>変数の中身を出すときは <code>"score"</code> ではなく <code>score</code> です。
+        </div>
+    </div>
+
+    <p class="lesson-end">
+        第4回のレッスンはここまでです。おつかれさまでした！
+    </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="arduino_lesson003.html">← 第3回へ</a>
+        <a href="index.html">HOME</a>
+        <a href="arduino_lesson005.html">第5回へ →</a>
+    </nav>
+
+</body>
+</html>

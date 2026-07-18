@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小・中学生のためのArduinoプログラミング講座 - 第12回</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>第12回：総合演習「入力で切りかわる「クイズ・ボット」を作ろう」</h2>
+
+    <h3>1. テーマ</h3>
+    <p>これまでの学習（表示・変数・入力・if/else・くり返し）を組み合わせて、番号で答えるミニクイズを作り、正解・不正解と得点を画面に出す総合演習です。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>総合演習：</strong> これまでに学んだ部品を組み合わせて、ひとつのプログラムを完成させること。</li>
+        <li><strong>得点（score）：</strong> 正解した回数を覚えておく変数。</li>
+        <li><strong>クイズ・ボット：</strong> 問題を出し、入力を受け取り、正誤を判定して返事をするプログラム。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>いよいよ最終回です。シリアルモニタ上で動く<strong>クイズ・ボット</strong>を作ります。</p>
+    <p>流れは次のとおりです。<ul><li>朝の会で問題を出します。</li><li>授業で、キーボードから番号（1や2）を受け取ります。</li><li><code>if / else</code> で正解か不正解かを判定します。</li><li>正解なら得点を増やします。</li></ul></p>
+    <p>部品（LEDやモーター）は使いません。文字のやり取りだけで、立派なクイズプログラムになります！</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>int score = 0;
+int question = 1;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("クイズ・ボット起動！");
+  Serial.println("Q1: 太陽がのぼる方向は？");
+  Serial.println("1: 東");
+  Serial.println("2: 西");
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char c = Serial.read();
+
+    if (c == '1' || c == '2') {
+      if (question == 1) {
+        if (c == '1') {
+          Serial.println("正解！");
+          score = score + 1;
+        } else {
+          Serial.println("ざんねん！正解は 1: 東");
+        }
+        question = 2;
+        Serial.println("Q2: 水の化学式は？");
+        Serial.println("1: CO2");
+        Serial.println("2: H2O");
+      } else if (question == 2) {
+        if (c == '2') {
+          Serial.println("正解！");
+          score = score + 1;
+        } else {
+          Serial.println("ざんねん！正解は 2: H2O");
+        }
+        Serial.print("得点: ");
+        Serial.println(score);
+        Serial.println("おつかれさま！HOMEへ戻って復習しよう");
+        question = 3;
+      }
+    }
+  }
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。これは、プログラムに文字の間違いがないかをパソコンが自動で調べるボタンです。画面の下の方に「コンパイル完了」と出れば、間違いがないという証拠です！</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p>間違いがないことを確認したら、隣にある<strong>「右矢印（➔）のボタン」</strong>をクリックします。プログラムがArduinoへ送り込まれます。画面の下の方に「書き込みが完了しました」と出るまで少し待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / 確認</span>
+            <div class="step-title">シリアルモニタを開く</div>
+            <p>画面の右上にある<strong>「虫眼鏡（🔍）のボタン」</strong>をクリックして、シリアルモニタという新しい画面を開きます。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>起動後に問題が出て、「1」→「2」の順に答えると、正誤メッセージのあと「得点: （0〜2）」が表示されたら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>int score = 0;</code></strong><br>得点を入れる変数です。最初は0です。</li>
+        <li><strong><code>int question = 1;</code></strong><br>いま何問目かを覚えておく変数です。</li>
+        <li><strong><code>void setup()</code></strong><br>クイズ開始と第1問の表示を1回だけ行います。</li>
+        <li><strong><code>if (Serial.available() > 0)</code></strong><br>入力があるときだけ判定します。</li>
+        <li><strong><code>char c = Serial.read();</code></strong><br>入力された文字（番号）を読みます。</li>
+        <li><strong><code>if (c == '1' || c == '2')</code></strong><br>1か2のときだけ答えとして扱います。<code>||</code> は「または」。</li>
+        <li><strong><code>if (question == 1) ... else if (question == 2)</code></strong><br>いまの問題番号に応じて判定を切り替えます。</li>
+        <li><strong><code>score = score + 1;</code></strong><br>正解したら得点を1増やします。</li>
+        <li><strong><code>Serial.print</code> / <code>Serial.println</code></strong><br>メッセージと得点を表示します。</li>
+        <li><strong><code>;</code> と <code>{ }</code></strong><br>区切りと範囲です。入れ子（中に中）になっているので特に注意します。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p>Q1の正解判定を入れ替えて（わざと違う番号を正解にして）、動きのちがいを観察してみましょう。終わったら元に戻すのも大切です。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>なみカッコの入れ子は合っていますか？</strong><br><code>if</code> が多いので、<code>{</code> と <code>}</code> の数を数えて確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>文字の番号は <code>'1'</code> ですか？</strong><br>数字の1（int）ではなく、文字の <code>'1'</code> として比べています。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong>シリアルモニタで1文字ずつ送れていますか？</strong><br>まずは <code>1</code> だけ送って反応を見てみましょう。
+        </div>
+    </div>
+
+    <p class="lesson-end">
+        第12回のレッスンはここまでです。おつかれさまでした！
+    </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="arduino_lesson011.html">← 第11回へ</a>
+        <a href="index.html">HOME</a>
+    </nav>
+
+</body>
+</html>

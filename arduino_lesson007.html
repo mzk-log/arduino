@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小・中学生のためのArduinoプログラミング講座 - 第7回</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>第7回：終わらない授業「loop」のパワー</h2>
+
+    <h3>1. テーマ</h3>
+    <p>授業（loop）がくり返されるたびに変数の中身を増やし、増え続ける数字を画面に出し続ける仕組みを学びます。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>増加（ぞうか）：</strong> 変数の値を大きくしていくこと。</li>
+        <li><strong><code>count = count + 1;</code>：</strong> いまの値に1を足して、同じ箱へ入れ直す書き方。</li>
+        <li><strong>状態（じょうたい）：</strong> いま変数に入っている値のこと。くり返しのあいだも覚えています。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>第2回で学んだ通り、<code>loop</code>（授業）は終わるとまた最初から始まります。今回はその力を使って、<strong>回るたびに数字が増えるカウンター</strong>を作ります。</p>
+    <code>count = count + 1;</code> は、「いまの count に 1 を足して、もう一度 count に入れる」という意味です。ノートの点数を1点ずつ増やしていくイメージです。
+    <p>変数を <code>setup</code>（朝の会）の外で作っておくと、授業がくり返されても箱そのものは消えず、中身がどんどん更新されていきます。</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>int count = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("カウンター開始");
+}
+
+void loop() {
+  count = count + 1;
+  Serial.println(count);
+  delay(1000);
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。これは、プログラムに文字の間違いがないかをパソコンが自動で調べるボタンです。画面の下の方に「コンパイル完了」と出れば、間違いがないという証拠です！</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p>間違いがないことを確認したら、隣にある<strong>「右矢印（➔）のボタン」</strong>をクリックします。プログラムがArduinoへ送り込まれます。画面の下の方に「書き込みが完了しました」と出るまで少し待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / 確認</span>
+            <div class="step-title">シリアルモニタを開く</div>
+            <p>画面の右上にある<strong>「虫眼鏡（🔍）のボタン」</strong>をクリックして、シリアルモニタという新しい画面を開きます。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>「カウンター開始」のあと、1、2、3… とおよそ1秒おきに増えていったら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>int count = 0;</code></strong><br><code>setup</code> の外で変数を作ります。こうすると朝の会でも授業でも使えます。</li>
+        <li><strong><code>void setup()</code></strong><br>通信準備と開始メッセージを1回だけ行います。</li>
+        <li><strong><code>count = count + 1;</code></strong><br>いまの値に1を足して代入します。</li>
+        <li><strong><code>Serial.println(count);</code></strong><br>更新された数字を表示します。</li>
+        <li><strong><code>delay(1000);</code></strong><br>1秒待ってから次のくり返しへ進みます。</li>
+        <li><strong><code>void loop()</code></strong><br>この中が終わると、また最初から実行されます。</li>
+        <li><strong><code>;</code> と <code>{ }</code></strong><br>区切りと範囲です。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p><code>count = count + 1;</code> を <strong><code>count = count + 2;</code></strong> に変えて、2、4、6… と増えるか確かめてみましょう。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>変数は <code>setup</code> の外にありますか？</strong><br><code>loop</code> の中だけで <code>int count = 0;</code> を書くと、毎回0に戻ってしまいます。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>セミコロンを忘れていませんか？</strong><br><code>count = count + 1</code> の最後に <code>;</code> があるか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong><code>delay</code> は半角ですか？</strong><br><code>delay(1000);</code> のつづりと数字を確認してください。
+        </div>
+    </div>
+
+    <p class="lesson-end">
+        第7回のレッスンはここまでです。おつかれさまでした！
+    </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="arduino_lesson006.html">← 第6回へ</a>
+        <a href="index.html">HOME</a>
+        <a href="arduino_lesson008.html">第8回へ →</a>
+    </nav>
+
+</body>
+</html>
