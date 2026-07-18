@@ -3,136 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小学生のためのArduinoプログラミング講座 - 第2回</title>
-    <style>
-        :root {
-            --primary-color: #007acc;
-            --secondary-color: #eef7fe;
-            --text-color: #333;
-            --border-color: #ddd;
-            --code-bg: #f5f5f5;
-        }
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-        }
-        h1 {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
-            font-size: 28px;
-        }
-        h2 {
-            color: #222;
-            border-left: 5px solid var(--primary-color);
-            padding-left: 10px;
-            margin-top: 30px;
-            font-size: 22px;
-        }
-        h3 {
-            font-size: 18px;
-            color: #444;
-            margin-top: 20px;
-        }
-        .intro-box {
-            background-color: #fffde7;
-            border-left: 5px solid #fdd835;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .intro-box p {
-            margin: 0;
-        }
-        .hint-box {
-            background-color: var(--secondary-color);
-            border-left: 5px solid var(--primary-color);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-        ul, ol {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        code {
-            font-family: Consolas, "Liberation Mono", Courier, monospace;
-            background-color: var(--code-bg);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
-        pre {
-            background-color: var(--code-bg);
-            border: 1px solid var(--border-color);
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        pre code {
-            background-color: transparent;
-            padding: 0;
-            font-size: 14px;
-        }
-        .step-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .step-item {
-            background-color: #fafafa;
-            border: 1px solid var(--border-color);
-            margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 6px;
-            position: relative;
-        }
-        .step-badge {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2px 8px;
-            font-size: 12px;
-            border-radius: 3px;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .step-title {
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        .error-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .error-item {
-            border-bottom: 1px dashed var(--border-color);
-            padding: 10px 0;
-        }
-        .error-item:last-child {
-            border-bottom: none;
-        }
-        .error-num {
-            font-weight: bold;
-            color: #d32f2f;
-            margin-right: 5px;
-        }
-        @media print {
-            body { max-width: 100%; padding: 0; }
-            .step-item { page-break-inside: avoid; }
-        }
-    </style>
+    <title>小・中学生のためのArduinoプログラミング講座 - 第2回</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>小学生のためのArduinoプログラミング講座</h1>
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
     
     <h2>第2回：プログラムの２つの行事（朝の会 と 授業）</h2>
 
@@ -242,9 +118,13 @@ void loop() {
         </div>
     </div>
 
-    <p style="text-align: center; margin-top: 40px; font-weight: bold;">
+    <p class="lesson-end">
         第2回のレッスンはここまでです。おつかれさまでした！
     </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="arduino_lesson001.html">← 第1回へ</a>
+        <a href="index.html">HOME</a>
+    </nav>
 
 </body>
 </html>
