@@ -32,6 +32,23 @@ h3 {
     color: #444;
     margin-top: 20px;
 }
+h4 {
+    font-size: 16px;
+    color: #555;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+.basics-link {
+    margin: 12px 0 16px;
+    padding: 12px 14px;
+    background-color: #fffde7;
+    border-left: 5px solid #fdd835;
+    border-radius: 4px;
+}
+.basics-link a {
+    color: #055a8c;
+    font-weight: bold;
+}
 .intro-box {
     background-color: #fffde7;
     border-left: 5px solid #fdd835;

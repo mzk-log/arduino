@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コードを書く基本ルール - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    <h2>コードを書く基本ルール</h2>
+    <p>プログラムを書くときに、毎回大切になるルールです。途中の回から始める人も、まずここを読んでからレッスンへ進みましょう。</p>
+
+    <h3>1. インデント（字下げ）</h3>
+    <p>作文で「段落の先頭を一字下げる」のと同じように、プログラムでも<strong>字を右にずらす</strong>書き方があります。これを<strong>インデント</strong>と呼びます。</p>
+    <p>なぜやるの？　<code>{</code> と <code>}</code> のあいだにある「仲間の行」が、見ただけで分かるようにするためです。ずれていると、「どこからどこまでがひとまとまりか」が分かりにくくなり、<code>}</code> の付け忘れなどのミスにも気づきにくくなります。</p>
+    <p><strong>この講座のルール：</strong></p>
+    <ul>
+        <li><code>{</code> のあとに続く中身は、半角スペース<strong>2つ分</strong>だけ右にずらす</li>
+        <li><code>}</code> は、ずらす前の位置（左）に戻す</li>
+    </ul>
+    <p>良い例：</p>
+<pre><code>void setup() {
+  Serial.begin(9600);
+  Serial.println("こんにちは");
+}</code></pre>
+    <p>悪い例（中身がずらしていない）：</p>
+<pre><code>void setup() {
+Serial.begin(9600);
+Serial.println("こんにちは");
+}</code></pre>
+    <div class="hint-box">
+        <strong>補足：</strong>
+        <p>インデントがなくても、プログラムが動くことはあります。でも、読みやすさとミス防止のために、<strong>必ず守る習慣</strong>にしましょう。</p>
+    </div>
+
+    <h3>2. カッコのちがい</h3>
+    <p>プログラムには、見た目が似ていても役割がちがうカッコがあります。</p>
+
+    <h4><code>{ }</code>（なみカッコ）</h4>
+    <p>「ここからここまでが、ひとまとまりの仕事です」という<strong>範囲</strong>を表します。関数の中身を囲むときに使います。</p>
+
+    <h4><code>( )</code>（まるカッコ）</h4>
+    <p>関数に「材料をわたす小さな箱」だと思ってください。</p>
+    <ul>
+        <li><code>Serial.println("こんにちは")</code> … 箱の中に「こんにちは」を入れて、「これを表示してね」とわたしている</li>
+        <li><code>Serial.begin(9600)</code> … 箱の中に数字 9600 をわたしている</li>
+        <li><code>setup()</code> や <code>loop()</code> のように<strong>箱が空</strong>のとき … 「わたす材料はないよ」という意味</li>
+    </ul>
+    <p><code>{ }</code> が「仕事の囲い」なら、<code>( )</code> は「材料をわたす場所」です。混ぜないようにしましょう。</p>
+
+    <h3>3. ほかにも大切な記号</h3>
+    <ul>
+        <li><strong><code>;</code>（セミコロン）</strong> … 日本語の「。」のように、「ここでひとつの処理が終わり」の目印</li>
+        <li><strong><code>"</code>（ダブルクォーテーション）</strong> … 文章（文字列）をはさむ記号</li>
+        <li><strong>半角</strong> … プログラムの英語や記号は、すべて半角で書く</li>
+    </ul>
+
+    <nav class="lesson-nav" aria-label="ページ移動">
+        <a href="javascript:history.back()">← 戻る</a>
+        <a href="index.html">HOME</a>
+    </nav>
+
+</body>
+</html>

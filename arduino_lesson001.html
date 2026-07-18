@@ -25,6 +25,8 @@
         <li><strong>void（ボイド）：</strong> 「空っぽ（何も返さない）」という意味の言葉。</li>
         <li><strong>文字列（もじれつ）：</strong> <code>"</code> と <code>"</code> で囲まれた、ただの「文章・メッセージ」データのこと。</li>
         <li><strong>セミコロン（ <code>;</code> ）：</strong> 処理の区切りにつける、日本語の「。」にあたる記号。</li>
+        <li><strong>インデント（字下げ）：</strong> <code>{</code> の中身を右にずらして書くこと。仲間の行が一目で分かるようにする。</li>
+        <li><strong>まるカッコ（ <code>( )</code> ）：</strong> 関数に材料をわたす場所。</li>
     </ul>
 
     <h3>3. 事前解説</h3>
@@ -32,8 +34,10 @@
     <p>Arduinoのプログラムには、最初から必ず <strong><code>setup（セットアップ）</code></strong> と <strong><code>loop（ループ）</code></strong> という名前の「２つの特別な関数」を書くルールになっています。</p>
     <p>関数は仕事を終えると、たまに「計算結果の数字」などを返してくれることがありますが、<code>setup</code> と <code>loop</code> は仕事をやり遂げるだけで、何も結果を返しません。そのため、「この関数は何も返さないよ（空っぽだよ）」ということをコンピューターに教えるために、頭に <strong><code>void（ボイド）</code></strong> という言葉をつけます。</p>
     <p>また、今回は画面に文字を表示させるために、すでに準備されている <strong><code>Serial.begin</code></strong> や <strong><code>Serial.println</code></strong> という関数も使います。画面に文字を表示するときは、データとして「これはプログラムの英語じゃなくて、ただの文章（文字列）だよ」と教えてあげる必要があります。そのため、画面に出したい日本語は <strong><code>"こんにちは"</code></strong> のように、必ず <code>"</code>（ダブルクォーテーション）という記号で挟むルールになっています。</p>
+    <p>コードを書くときは、<strong>インデント（字下げ）</strong>と<strong>カッコのちがい</strong>も大切です。くわしくは <a href="basics.html">コードを書く基本ルール</a> にまとめてあります。途中の回から始める人も、まずそちらを読んでください。</p>
 
     <h3>4. コード（プログラム）</h3>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="basics.html">インデントとカッコのルールを確認</a></p>
     <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
 <pre><code>void setup() {
   Serial.begin(9600);
@@ -79,9 +83,11 @@ void loop() {
         <li><strong><code>void setup() { ... }</code></strong><br>
         Arduinoの電源が入ったときに、上から順番に<strong>「最初の1回だけ」</strong>実行される特別な関数です。学校の「朝の会」のように、その日最初の準備をこの中でします。頭の <code>void</code> は「結果を返さない空っぽの関数」という意味です。</li>
         <li><strong><code>{</code> と <code>}</code> （なみカッコ）</strong><br>
-        この関数の仕事が「どこからどこまでなのか」という範囲を表す記号です。</li>
+        この関数の仕事が「どこからどこまでなのか」という範囲を表す記号です。作文の段落のように、<code>{</code> の中身は半角スペース2つ分だけ右にずらして書きます（インデント）。</li>
+        <li><strong><code>(</code> と <code>)</code> （まるカッコ）</strong><br>
+        関数に「材料をわたす小さな箱」です。<code>Serial.println("こんにちは")</code> では箱の中に「こんにちは」を入れています。<code>setup()</code> のように空のときは、「わたす材料はないよ」という意味です。</li>
         <li><strong><code>Serial.begin(9600);</code></strong><br>
-        パソコンとArduinoの間で、文字のやり取り（通信）ができるように準備を始める関数です。</li>
+        パソコンとArduinoの間で、文字のやり取り（通信）ができるように準備を始める関数です。まるカッコの中の <code>9600</code> が、わたす材料（通信の速さ）です。</li>
         <li><strong><code>Serial.println("こんにちは");</code></strong><br>
         「こんにちは」という文字列データを、パソコンの画面（シリアルモニタ）に向けて送り出し、表示させるための関数です。</li>
         <li><strong><code>;</code> （セミコロン）</strong><br>
