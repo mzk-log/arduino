@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小学生のためのArduinoプログラミング講座 - 第1回</title>
+    <style>
+        :root {
+            --primary-color: #007acc;
+            --secondary-color: #eef7fe;
+            --text-color: #333;
+            --border-color: #ddd;
+            --code-bg: #f5f5f5;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            font-size: 28px;
+        }
+        h2 {
+            color: #222;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 30px;
+            font-size: 22px;
+        }
+        h3 {
+            font-size: 18px;
+            color: #444;
+            margin-top: 20px;
+        }
+        .intro-box {
+            background-color: #fffde7;
+            border-left: 5px solid #fdd835;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .intro-box p {
+            margin: 0;
+        }
+        .hint-box {
+            background-color: var(--secondary-color);
+            border-left: 5px solid var(--primary-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            font-family: Consolas, "Liberation Mono", Courier, monospace;
+            background-color: var(--code-bg);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 14px;
+        }
+        .step-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .step-item {
+            background-color: #fafafa;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            position: relative;
+        }
+        .step-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .step-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .error-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .error-item {
+            border-bottom: 1px dashed var(--border-color);
+            padding: 10px 0;
+        }
+        .error-item:last-child {
+            border-bottom: none;
+        }
+        .error-num {
+            font-weight: bold;
+            color: #d32f2f;
+            margin-right: 5px;
+        }
+        @media print {
+            body { max-width: 100%; padding: 0; }
+            .step-item { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>小学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>第1回：パソコンの画面にメッセージを出してみよう！</h2>
+
+    <h3>1. テーマ</h3>
+    <p>パソコンからArduino（アルドゥイーノ）へ文字データを送り、Arduinoがそれを受け取って、パソコンの画面にメッセージを表示する仕組みを学びます。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>関数（かんすう）：</strong> 特定の仕事をまとめて実行するために、あらかじめ用意されている仕組みのこと。</li>
+        <li><strong>void（ボイド）：</strong> 「空っぽ（何も返さない）」という意味の言葉。</li>
+        <li><strong>文字列（もじれつ）：</strong> <code>"</code> と <code>"</code> で囲まれた、ただの「文章・メッセージ」データのこと。</li>
+        <li><strong>セミコロン（ <code>;</code> ）：</strong> 処理の区切りにつける、日本語の「。」にあたる記号。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>プログラミングは、コンピューターに対して実行してほしい仕事を順番に書いていく作業です。この仕事のまとまりのことをプログラミングの世界では<strong>「関数（かんすう）」</strong>と呼びます。</p>
+    <p>Arduinoのプログラムには、最初から必ず <strong><code>setup（セットアップ）</code></strong> と <strong><code>loop（ループ）</code></strong> という名前の「２つの特別な関数」を書くルールになっています。</p>
+    <p>関数は仕事を終えると、たまに「計算結果の数字」などを返してくれることがありますが、<code>setup</code> と <code>loop</code> は仕事をやり遂げるだけで、何も結果を返しません。そのため、「この関数は何も返さないよ（空っぽだよ）」ということをコンピューターに教えるために、頭に <strong><code>void（ボイド）</code></strong> という言葉をつけます。</p>
+    <p>また、今回は画面に文字を表示させるために、すでに準備されている <strong><code>Serial.begin</code></strong> や <strong><code>Serial.println</code></strong> という関数も使います。画面に文字を表示するときは、データとして「これはプログラムの英語じゃなくて、ただの文章（文字列）だよ」と教えてあげる必要があります。そのため、画面に出したい日本語は <strong><code>"こんにちは"</code></strong> のように、必ず <code>"</code>（ダブルクォーテーション）という記号で挟むルールになっています。</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>void setup() {
+  Serial.begin(9600);
+  Serial.println("こんにちは");
+}
+
+void loop() {
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。これは、プログラムに文字の間違いがないかをパソコンが自動で調べるボタンです。画面の下の方に「コンパイル完了」と出れば、間違いがないという証拠です！</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p>間違いがないことを確認したら、隣にある<strong>「右矢印（➔）のボタン」</strong>をクリックします。プログラムがArduinoへ送り込まれます。画面の下の方に「書き込みが完了しました」と出るまで少し待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / 確認</span>
+            <div class="step-title">シリアルモニタを開く</div>
+            <p>画面の右上にある<strong>「虫眼鏡（🔍）のボタン」</strong>をクリックして、シリアルモニタという新しい画面を開きます。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>シリアルモニタの画面に「こんにちは」とパッと表示されたら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>void setup() { ... }</code></strong><br>
+        Arduinoの電源が入ったときに、上から順番に<strong>「最初の1回だけ」</strong>実行される特別な関数です。学校の「朝の会」のように、その日最初の準備をこの中でします。頭の <code>void</code> は「結果を返さない空っぽの関数」という意味です。</li>
+        <li><strong><code>{</code> と <code>}</code> （なみカッコ）</strong><br>
+        この関数の仕事が「どこからどこまでなのか」という範囲を表す記号です。</li>
+        <li><strong><code>Serial.begin(9600);</code></strong><br>
+        パソコンとArduinoの間で、文字のやり取り（通信）ができるように準備を始める関数です。</li>
+        <li><strong><code>Serial.println("こんにちは");</code></strong><br>
+        「こんにちは」という文字列データを、パソコンの画面（シリアルモニタ）に向けて送り出し、表示させるための関数です。</li>
+        <li><strong><code>;</code> （セミコロン）</strong><br>
+        「ここでひとつの処理が終わりです」という区切りの目印です。</li>
+        <li><strong><code>void loop() { ... }</code></strong><br>
+        <code>setup</code>（朝の会）が終わったあとに、ずーっと無限に何度もくり返し実行される特別な関数です。学校の「授業（じゅぎょう）」にあたる場所です。今回はまだ中に何も処理が書かれていないので、空っぽのままくり返します。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p>プログラムを書き換えて、パソコンの画面に出る文字を「こんにちは」から、夜のあいさつの<strong>「こんばんは」</strong>に変えてみましょう。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>セミコロン（ <code>;</code> ）を忘れていませんか？</strong><br>
+            <code>Serial.println("こんばんは")</code> の最後に <code>;</code> があるか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>記号が消えていませんか？</strong><br>
+            文字を挟む <code>"</code> と <code>"</code> 、関数を囲む <code>{</code> と <code>}</code> が、ちゃんと残っているか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong>アルファベットは「半角（はんかく）」ですか？</strong><br>
+            英語の文字やカッコ、セミコロンが、日本語を入力するときの「全角（大きな文字）」になっていないか確認してください。（※プログラミングはすべて半角の英語や記号で書くルールです）
+        </div>
+    </div>
+
+</body>
+</html>
