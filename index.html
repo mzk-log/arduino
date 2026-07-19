@@ -11,90 +11,162 @@
     <header class="hero">
         <p class="hero-eyebrow">Arduino Lesson</p>
         <h1>小・中学生のためのArduinoプログラミング講座</h1>
-        <p class="hero-lead">パソコンとArduinoだけで、プログラムのしくみをひとつずつ学んでいこう。<br>小さな一歩が、大きな「できた！」につながります。</p>
-        <p class="hero-message">今日も、自分のペースでチャレンジしてみよう！</p>
+        <p class="hero-lead">
+            パソコンとArduinoで、プログラムの基本から電子工作まで段階的に学ぼう。<br>
+            自分に合ったコースから、一つずつ「できた！」を増やしていきます。
+        </p>
+        <p class="hero-message">初めての方は「はじめる前の準備」から進みましょう。</p>
     </header>
 
-    <section>
-        <h2>レッスン一覧</h2>
-        <p>気になる回をクリックして、学習を始めましょう。</p>
-        <div class="hint-box">
-            <strong>💡 学習のコツ：</strong>
-            <p>わからなくても大丈夫。まずは動かしてみて、「できた！」を積み重ねていきましょう。保護者と一緒に読むのもおすすめです。</p>
+    <section class="start-card" aria-labelledby="start-title">
+        <h2 id="start-title">はじめる前の準備</h2>
+        <p>Arduino IDEのインストール、基板とUSBケーブルの準備、ボード・ポートの設定、最初の書き込みを確認します。</p>
+        <span class="status-label">準備中</span>
+    </section>
+
+    <section aria-labelledby="course-title">
+        <h2 id="course-title">学習コース</h2>
+        <p>学びたい内容に合わせてコースを選びましょう。</p>
+
+        <div class="course-nav">
+            <a class="course-card basic" href="#basic-course">
+                <h3>基礎編</h3>
+                <p>外部部品を使わず、Arduino本体とパソコンだけでプログラムの基本を学びます。</p>
+                <p><strong>必要なもの：</strong>Arduino本体・USBケーブル・パソコン</p>
+                <span class="course-link">基礎編を見る ↓</span>
+            </a>
+
+            <a class="course-card advanced" href="#advanced-course">
+                <h3>発展編</h3>
+                <p>LEDやスイッチなどを使い、プログラムが現実の部品を動かす仕組みを学びます。</p>
+                <p><strong>前提：</strong>基礎編の修了を推奨・追加部品あり</p>
+                <span class="course-link">発展編を見る ↓</span>
+            </a>
         </div>
-        <div class="hint-box">
-            <strong>📘 初めての方へ：</strong>
-            <p>コードを書く前に、<a href="basics.html"><strong>インデントとカッコの基本ルール</strong></a>を読んでおきましょう。途中の回から始める人も、ここから確認できます。</p>
+    </section>
+
+    <section class="course-section" aria-labelledby="guide-title">
+        <h2 id="guide-title">学習ガイド</h2>
+        <p>レッスン中に分からなくなったときや、もっと詳しく知りたいときに使います。</p>
+
+        <div class="guide-grid">
+            <a class="guide-card" href="guides/code-basics.html">
+                <strong>コードを書く基本ルール</strong>
+                インデントやカッコの役割を確認します。
+            </a>
+            <div class="guide-card pending-card">
+                <strong>データ型を知ろう</strong>
+                <code>int</code>や<code>char</code>の違いを整理します。
+                <span class="status-label">準備中</span>
+            </div>
+            <div class="guide-card pending-card">
+                <strong>リファレンスで調べよう</strong>
+                関数や型を自分で探す方法を学びます。
+                <span class="status-label">準備中</span>
+            </div>
         </div>
-        <div class="lesson-list">
-            <a class="lesson-card" href="arduino_lesson001.html">
+    </section>
+
+    <section id="basic-course" class="course-section" aria-labelledby="basic-title">
+        <div class="section-heading basic">
+            <h2 id="basic-title">基礎編</h2>
+            <p>外部部品を使わず、シリアルモニタを中心にプログラムの考え方を身につけます。全12回です。</p>
+        </div>
+
+        <div class="lesson-grid">
+            <a class="lesson-card" href="lessons/basic/lesson001.html">
                 <span class="lesson-num">第1回</span>
                 <span class="lesson-title">パソコンの画面にメッセージを出してみよう！</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson002.html">
+            <a class="lesson-card" href="lessons/basic/lesson002.html">
                 <span class="lesson-num">第2回</span>
                 <span class="lesson-title">プログラムの２つの行事（朝の会 と 授業）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson003.html">
+            <a class="lesson-card" href="lessons/basic/lesson003.html">
                 <span class="lesson-num">第3回</span>
                 <span class="lesson-title">時間をあやつる命令を使おう（delay）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson004.html">
+            <a class="lesson-card" href="lessons/basic/lesson004.html">
                 <span class="lesson-num">第4回</span>
                 <span class="lesson-title">データをあずかる「魔法の箱」（変数）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson005.html">
+            <a class="lesson-card" href="lessons/basic/lesson005.html">
                 <span class="lesson-num">第5回</span>
                 <span class="lesson-title">箱の中身を入れ替えよう（代入）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson006.html">
+            <a class="lesson-card" href="lessons/basic/lesson006.html">
                 <span class="lesson-num">第6回</span>
                 <span class="lesson-title">コンピューターに計算させよう（演算子）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson007.html">
+            <a class="lesson-card" href="lessons/basic/lesson007.html">
                 <span class="lesson-num">第7回</span>
                 <span class="lesson-title">終わらない授業「loop」のパワー</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson008.html">
+            <a class="lesson-card" href="lessons/basic/lesson008.html">
                 <span class="lesson-num">第8回</span>
                 <span class="lesson-title">キーボードの入力を受け取ろう</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson009.html">
+            <a class="lesson-card" href="lessons/basic/lesson009.html">
                 <span class="lesson-num">第9回</span>
                 <span class="lesson-title">もし〜なら（条件分岐 if）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson010.html">
+            <a class="lesson-card" href="lessons/basic/lesson010.html">
                 <span class="lesson-num">第10回</span>
                 <span class="lesson-title">そうでなければ（ if - else ）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson011.html">
+            <a class="lesson-card" href="lessons/basic/lesson011.html">
                 <span class="lesson-num">第11回</span>
                 <span class="lesson-title">決まった回数だけ繰り返そう（ for ）</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
-            <a class="lesson-card" href="arduino_lesson012.html">
+            <a class="lesson-card" href="lessons/basic/lesson012.html">
                 <span class="lesson-num">第12回</span>
-                <span class="lesson-title">総合演習「入力で切りかわる「クイズ・ボット」を作ろう」</span>
+                <span class="lesson-title">総合演習「入力で切りかわる『クイズ・ボット』を作ろう」</span>
                 <span class="lesson-go">はじめる →</span>
             </a>
         </div>
     </section>
 
+    <section id="advanced-course" class="course-section" aria-labelledby="advanced-title">
+        <div class="section-heading advanced">
+            <h2 id="advanced-title">発展編</h2>
+            <p>基礎編で学んだコードを使い、LEDなどの部品を安全に動かします。各回の部品表と安全事項を確認して進めます。</p>
+        </div>
+
+        <div class="lesson-grid">
+            <div class="lesson-card advanced-card pending-card">
+                <span class="lesson-num">発展編 第1回</span>
+                <span class="lesson-title">Arduino本体のLEDを点滅させよう</span>
+                <span class="lesson-meta">追加部品なし・オンボードLED使用</span>
+                <span class="status-label">準備中</span>
+            </div>
+            <div class="lesson-card advanced-card pending-card">
+                <span class="lesson-num">発展編 第2回</span>
+                <span class="lesson-title">外付けLEDを安全に光らせよう</span>
+                <span class="lesson-meta">追加部品あり・配線と安全確認が必要</span>
+                <span class="status-label">準備中</span>
+            </div>
+        </div>
+    </section>
 
     <section class="comment-box">
         <p><strong>ご意見・改善要望</strong></p>
         <p>匿名でコメントを送れます。サイトには掲載せず、管理者だけが確認します。個別の返信は行いません。</p>
-        <p><a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">匿名でコメントを送る</a></p>
+        <p>
+            <a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">
+                匿名でコメントを送る
+            </a>
+        </p>
     </section>
 
 </body>

@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小・中学生のためのArduinoプログラミング講座 - 第1回</title>
-    <link rel="stylesheet" href="style.css">
+    <title>基礎編 第1回 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <a href="../../index.html#basic-course">基礎編</a>
+        <span aria-hidden="true">›</span>
+        <span>第1回</span>
+    </nav>
+
     <h1>小・中学生のためのArduinoプログラミング講座</h1>
     
-    <h2>第1回：パソコンの画面にメッセージを出してみよう！</h2>
+    <h2>基礎編 第1回：パソコンの画面にメッセージを出してみよう！</h2>
 
     <h3>1. テーマ</h3>
     <p>パソコンからArduino（アルドゥイーノ）へ文字データを送り、Arduinoがそれを受け取って、パソコンの画面にメッセージを表示する仕組みを学びます。</p>
@@ -34,10 +42,10 @@
     <p>Arduinoのプログラムには、最初から必ず <strong><code>setup（セットアップ）</code></strong> と <strong><code>loop（ループ）</code></strong> という名前の「２つの特別な関数」を書くルールになっています。</p>
     <p>関数は仕事を終えると、たまに「計算結果の数字」などを返してくれることがありますが、<code>setup</code> と <code>loop</code> は仕事をやり遂げるだけで、何も結果を返しません。そのため、「この関数は何も返さないよ（空っぽだよ）」ということをコンピューターに教えるために、頭に <strong><code>void（ボイド）</code></strong> という言葉をつけます。</p>
     <p>また、今回は画面に文字を表示させるために、すでに準備されている <strong><code>Serial.begin</code></strong> や <strong><code>Serial.println</code></strong> という関数も使います。画面に文字を表示するときは、データとして「これはプログラムの英語じゃなくて、ただの文章（文字列）だよ」と教えてあげる必要があります。そのため、画面に出したい日本語は <strong><code>"こんにちは"</code></strong> のように、必ず <code>"</code>（ダブルクォーテーション）という記号で挟むルールになっています。</p>
-    <p>コードを書くときは、<strong>インデント（字下げ）</strong>と<strong>カッコのちがい</strong>も大切です。くわしくは <a href="basics.html">コードを書く基本ルール</a> にまとめてあります。途中の回から始める人も、まずそちらを読んでください。</p>
+    <p>コードを書くときは、<strong>インデント（字下げ）</strong>と<strong>カッコのちがい</strong>も大切です。くわしくは <a href="../../guides/code-basics.html">コードを書く基本ルール</a> にまとめてあります。途中の回から始める人も、まずそちらを読んでください。</p>
 
     <h3>4. コード（プログラム）</h3>
-    <p class="basics-link">初めての方・途中から始める方へ：<a href="basics.html">インデントとカッコのルールを確認</a></p>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="../../guides/code-basics.html">インデントとカッコのルールを確認</a></p>
     <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
 <pre><code>void setup() {
   Serial.begin(9600);
@@ -121,8 +129,8 @@ void loop() {
         第1回のレッスンはここまでです。おつかれさまでした！
     </p>
     <nav class="lesson-nav" aria-label="レッスン移動">
-        <a href="index.html">HOME</a>
-        <a href="arduino_lesson002.html">第2回へ →</a>
+        <a href="../../index.html">HOME</a>
+        <a href="lesson002.html">第2回へ →</a>
     </nav>
 
 

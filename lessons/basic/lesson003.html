@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基礎編 第3回 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <a href="../../index.html#basic-course">基礎編</a>
+        <span aria-hidden="true">›</span>
+        <span>第3回</span>
+    </nav>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>基礎編 第3回：時間をあやつる命令を使おう（delay）</h2>
+
+    <h3>1. テーマ</h3>
+    <p>メッセージを表示したあと、プログラムの流れをいったん止め、決めた時間だけ待ってから次の処理へ進む方法を学びます。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>delay（ディレイ）：</strong> プログラムを、決めた時間（ミリ秒）だけ一時停止する関数。</li>
+        <li><strong>ミリ秒（ミリびょう）：</strong> 時間の単位で、1000ミリ秒＝1秒。</li>
+        <li><strong>待つ：</strong> 次の処理へ進む前に、時間を空けること。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>第2回では、<code>loop</code>（授業）の中のメッセージがとても速くくり返されました。これは、コンピューターがとても速いスピードで仕事をしているからです。</p>
+    <p>そこで今回は、<strong><code>delay</code></strong> という関数を使います。<code>delay(1000);</code> と書くと、「ここで1000ミリ秒（＝1秒）待ってから次へ進んでね」という意味になります。</p>
+    <p>学校のたとえで言うと、授業の途中で「ちょっと一休み」を入れるイメージです。朝の会（<code>setup</code>）と授業（<code>loop</code>）のしくみはそのままです。</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="../../guides/code-basics.html">インデントとカッコのルールを確認</a></p>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>void setup() {
+  Serial.begin(9600);
+  Serial.println("朝の会：準備完了！");
+}
+
+void loop() {
+  Serial.println("授業：1秒ごとに表示");
+  delay(1000);
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。これは、プログラムに文字の間違いがないかをパソコンが自動で調べるボタンです。画面の下の方に「コンパイル完了」と出れば、間違いがないという証拠です！</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p>間違いがないことを確認したら、隣にある<strong>「右矢印（➔）のボタン」</strong>をクリックします。プログラムがArduinoへ送り込まれます。画面の下の方に「書き込みが完了しました」と出るまで少し待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / 確認</span>
+            <div class="step-title">シリアルモニタを開く</div>
+            <p>画面の右上にある<strong>「虫眼鏡（🔍）のボタン」</strong>をクリックして、シリアルモニタという新しい画面を開きます。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>「朝の会：準備完了！」が1回出たあと、「授業：1秒ごとに表示」がおよそ1秒おきにくり返し出たら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>void setup() { ... }</code></strong><br>最初に1回だけ実行される朝の会です。</li>
+        <li><strong><code>Serial.begin(9600);</code></strong><br>パソコンとArduinoの通信準備です。</li>
+        <li><strong><code>Serial.println("朝の会：準備完了！");</code></strong><br>朝の会のメッセージを1回表示します。</li>
+        <li><strong><code>void loop() { ... }</code></strong><br>授業。終わると最初からくり返します。</li>
+        <li><strong><code>Serial.println("授業：1秒ごとに表示");</code></strong><br>授業中のメッセージを表示します。</li>
+        <li><strong><code>delay(1000);</code></strong><br>ここで1000ミリ秒（1秒）待ちます。待っているあいだは次の処理へ進みません。</li>
+        <li><strong><code>;</code> （セミコロン）</strong><br>処理の区切りです。</li>
+        <li><strong><code>{</code> と <code>}</code></strong><br>関数の範囲を表します。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p><code>delay(1000);</code> を <strong><code>delay(2000);</code></strong> に変えて、およそ2秒ごとに表示されるか確かめてみましょう。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong><code>delay</code> の数字は半角ですか？</strong><br><code>delay(1000);</code> の <code>1000</code> が全角になっていないか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>セミコロン（ <code>;</code> ）を忘れていませんか？</strong><br><code>delay(1000)</code> の最後に <code>;</code> があるか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong>なみカッコはそろっていますか？</strong><br><code>setup</code> と <code>loop</code> の <code>{</code> <code>}</code> が閉じているか確認してください。
+        </div>
+    </div>
+
+    <p class="lesson-end">
+        第3回のレッスンはここまでです。おつかれさまでした！
+    </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="lesson002.html">← 第2回へ</a>
+        <a href="../../index.html">HOME</a>
+        <a href="lesson004.html">第4回へ →</a>
+    </nav>
+
+
+    <section class="comment-box">
+        <p><strong>ご意見・改善要望</strong></p>
+        <p>匿名でコメントを送れます。サイトには掲載せず、管理者だけが確認します。個別の返信は行いません。</p>
+        <p><a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">匿名でコメントを送る</a></p>
+    </section>
+
+</body>
+</html>

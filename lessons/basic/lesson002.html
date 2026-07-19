@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小・中学生のためのArduinoプログラミング講座 - 第2回</title>
-    <link rel="stylesheet" href="style.css">
+    <title>基礎編 第2回 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <a href="../../index.html#basic-course">基礎編</a>
+        <span aria-hidden="true">›</span>
+        <span>第2回</span>
+    </nav>
+
     <h1>小・中学生のためのArduinoプログラミング講座</h1>
     
-    <h2>第2回：プログラムの２つの行事（朝の会 と 授業）</h2>
+    <h2>基礎編 第2回：プログラムの２つの行事（朝の会 と 授業）</h2>
 
     <h3>1. テーマ</h3>
     <p>Arduinoのプログラムには、<strong>最初に1回だけ動く関数</strong>と、<strong>そのあとずっとくり返す関数</strong>の2つがあります。それぞれの中に書いた文字データが、パソコンのシリアルモニタへどのように送られるかを学びます。</p>
@@ -38,7 +46,7 @@
     <p>なお、今回はまだ「待つ」命令（あとで学ぶ <code>delay</code>）を使わないので、<code>loop</code> の中の文字はとても速くくり返され、画面にたくさん並んで見えることがあります。それで正解です！</p>
 
     <h3>4. コード（プログラム）</h3>
-    <p class="basics-link">初めての方・途中から始める方へ：<a href="basics.html">インデントとカッコのルールを確認</a></p>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="../../guides/code-basics.html">インデントとカッコのルールを確認</a></p>
     <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
 <pre><code>void setup() {
   Serial.begin(9600);
@@ -123,9 +131,9 @@ void loop() {
         第2回のレッスンはここまでです。おつかれさまでした！
     </p>
     <nav class="lesson-nav" aria-label="レッスン移動">
-        <a href="arduino_lesson001.html">← 第1回へ</a>
-        <a href="index.html">HOME</a>
-        <a href="arduino_lesson003.html">第3回へ →</a>
+        <a href="lesson001.html">← 第1回へ</a>
+        <a href="../../index.html">HOME</a>
+        <a href="lesson003.html">第3回へ →</a>
     </nav>
 
 

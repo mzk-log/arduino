@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小・中学生のためのArduinoプログラミング講座 - 第5回</title>
-    <link rel="stylesheet" href="style.css">
+    <title>基礎編 第10回 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <a href="../../index.html#basic-course">基礎編</a>
+        <span aria-hidden="true">›</span>
+        <span>第10回</span>
+    </nav>
+
     <h1>小・中学生のためのArduinoプログラミング講座</h1>
     
-    <h2>第5回：箱の中身を入れ替えよう（代入）</h2>
+    <h2>基礎編 第10回：そうでなければ（ if - else ）</h2>
 
     <h3>1. テーマ</h3>
-    <p>すでに作った変数（箱）の中身を、あとから別の値に入れ替えて、画面に出す流れを学びます。</p>
+    <p>条件が正しいときの処理と、正しくないときの処理を分けて、どちらにも返事を返す方法を学びます。</p>
 
     <h3>2. 今回覚えること</h3>
     <div class="intro-box">
@@ -21,32 +29,35 @@
         <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
     </div>
     <ul>
-        <li><strong>代入（だいにゅう）：</strong> すでに作った変数へ、新しい値を入れること。</li>
-        <li><strong><code>=</code>（代入演算子）：</strong> 「右の値を、左の変数へ入れる」記号。</li>
-        <li><strong>上書き：</strong> 箱の古い中身を消して、新しい中身にすること。</li>
+        <li><strong><code>else</code>：</strong> 「そうでなければ」という意味のキーワード。</li>
+        <li><strong>二者択一：</strong> 条件が正しいか正しくないかで、どちらか一方の道を進むこと。</li>
     </ul>
 
     <h3>3. 事前解説</h3>
-    <p>第4回では、変数を作ると同時に最初の値を入れました。今回は、そのあとに<strong>中身を入れ替える</strong>練習をします。</p>
-    <code>count = 5;</code> のように書くと、「すでに作ってある <code>count</code> という箱に、あらためて 5 を入れる」という意味になります。これを<strong>代入</strong>と呼びます。
-    <p>代入すると、箱の中の古い値は消えて、新しい値だけが残ります（上書き）。学校のノートに書いた答えを消して、新しい答えを書き直すイメージです。</p>
+    <p>第9回の <code>if</code> だけでは、「条件が合ったとき」しか反応しませんでした。今回は <strong><code>else</code></strong> をつけて、「合わなかったとき」の返事も書きます。</p>
+    <code>if (条件) { ... } else { ... }</code> は、「もし条件が正しければ前者、そうでなければ後者」という意味です。
+    <p>クイズで「正解」「不正解」の両方を返すイメージです。第12回のクイズ・ボットでも、この形を使います。</p>
 
     <h3>4. コード（プログラム）</h3>
-    <p class="basics-link">初めての方・途中から始める方へ：<a href="basics.html">インデントとカッコのルールを確認</a></p>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="../../guides/code-basics.html">インデントとカッコのルールを確認</a></p>
     <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
 <pre><code>void setup() {
   Serial.begin(9600);
-
-  int count = 1;
-  Serial.println("最初の数");
-  Serial.println(count);
-
-  count = 5;
-  Serial.println("入れ替えたあと");
-  Serial.println(count);
+  Serial.println("パスワードは Y です");
 }
 
 void loop() {
+  if (Serial.available() > 0) {
+    char c = Serial.read();
+
+    if (c == 'Y') {
+      Serial.println("正解！入れるよ");
+    } else {
+      if (c != '\n' && c != '\r') {
+        Serial.println("違うよ。もう一度！");
+      }
+    }
+  }
 }</code></pre>
 
     <h3>5. 動かし方（手順）</h3>
@@ -77,45 +88,43 @@ void loop() {
 
     <div class="hint-box">
         <strong>🔍 確認しよう：</strong>
-        <p>「最初の数」「1」「入れ替えたあと」「5」の順に表示されたら大成功です！</p>
+        <p>「Y」を送ると「正解！入れるよ」、「Y」以外（例：N）を送ると「違うよ。もう一度！」と出たら大成功です。</p>
     </div>
 
     <h3>6. コード解説</h3>
     <ul>
-        <li><strong><code>int count = 1;</code></strong><br>変数 <code>count</code> を作り、最初に 1 を入れます。</li>
-        <li><strong><code>Serial.println(count);</code></strong><br>いまの箱の中身を表示します（最初は 1）。</li>
-        <li><strong><code>count = 5;</code></strong><br>すでに作った箱へ 5 を代入します。古い 1 は上書きされます。</li>
-        <li><strong><code>=</code></strong><br>右の値を左の変数へ入れる記号です。</li>
-        <li><strong><code>Serial.begin(9600);</code></strong><br>通信準備です。</li>
-        <li><strong><code>void setup() / void loop()</code></strong><br>朝の会と授業です。今回の処理は朝の会で1回だけ行います。</li>
-        <li><strong><code>;</code> と <code>{ }</code></strong><br>区切りと範囲を表す記号です。</li>
+        <li><strong><code>if (c == 'Y') { ... } else { ... }</code></strong><br>Y なら正解メッセージ、そうでなければ別メッセージを出します。</li>
+        <li><strong><code>else</code></strong><br>直前の <code>if</code> の条件が正しくないときに実行されます。</li>
+        <li><strong><code>c != '\n' && c != '\r'</code></strong><br>Enterキーなどで送られる改行文字のときは、エラーメッセージを出さないための工夫です。<code>!=</code> は「等しくない」、<code>&&</code> は「かつ」です。</li>
+        <li><strong><code>Serial.available()</code> / <code>Serial.read()</code></strong><br>文字の到着確認と読み取りです。</li>
+        <li><strong><code>void setup() / void loop()</code> と <code>;</code> <code>{ }</code></strong><br>朝の会・授業、区切り、範囲です。</li>
     </ul>
 
     <h3>7. 練習問題</h3>
-    <p>2回目の代入を <code>count = 5;</code> から <strong><code>count = 100;</code></strong> に変えて、最後に「100」が出るか確かめてみましょう。</p>
+    <p>正解の文字を <code>'Y'</code> から <strong><code>'G'</code></strong> に変えて、G のときだけ「正解」になるか確かめてみましょう。</p>
 
     <h3>8. うまく動かないとき（エラー）のアクション</h3>
     <p>もし画面にエラー（赤い文字など）が出て動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
     
     <div class="error-list">
         <div class="error-item">
-            <span class="error-num">1.</span> <strong>変数を作る前に代入していませんか？</strong><br>先に <code>int count = 1;</code> で箱を作ってから、あとで <code>count = 5;</code> します。
+            <span class="error-num">1.</span> <strong><code>else</code> の位置は合っていますか？</strong><br><code>if</code> のなみカッコの直後に <code>else</code> が続く形です。
         </div>
         <div class="error-item">
-            <span class="error-num">2.</span> <strong>セミコロンを忘れていませんか？</strong><br><code>count = 5</code> の最後に <code>;</code> があるか確認してください。
+            <span class="error-num">2.</span> <strong><code>==</code> と <code>=</code> をまちがえていませんか？</strong><br>比べるときは <code>==</code> です。
         </div>
         <div class="error-item">
-            <span class="error-num">3.</span> <strong>変数名のつづりは同じですか？</strong><br><code>count</code> と <code>Count</code> は別物として扱われます。
+            <span class="error-num">3.</span> <strong>なみカッコの数は足りていますか？</strong><br><code>if</code> と <code>else</code> と <code>loop</code> の <code>{</code> <code>}</code> を確認してください。
         </div>
     </div>
 
     <p class="lesson-end">
-        第5回のレッスンはここまでです。おつかれさまでした！
+        第10回のレッスンはここまでです。おつかれさまでした！
     </p>
     <nav class="lesson-nav" aria-label="レッスン移動">
-        <a href="arduino_lesson004.html">← 第4回へ</a>
-        <a href="index.html">HOME</a>
-        <a href="arduino_lesson006.html">第6回へ →</a>
+        <a href="lesson009.html">← 第9回へ</a>
+        <a href="../../index.html">HOME</a>
+        <a href="lesson011.html">第11回へ →</a>
     </nav>
 
 
