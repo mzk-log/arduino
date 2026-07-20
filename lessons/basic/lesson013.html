@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基礎編 第13回 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <a href="../../index.html#basic-course">基礎編</a>
+        <span aria-hidden="true">›</span>
+        <span>第13回</span>
+    </nav>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>基礎編 第13回：Arduino本体のLEDを点滅させよう</h2>
+
+    <h3>1. テーマ</h3>
+    <p>外部部品を使わず、Arduino本体に付いているLED（オンボードLED）を、プログラムで点灯・消灯させて点滅させます。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>オンボードLED：</strong> Arduino本体にあらかじめ付いている小さなLEDのこと。外付けの部品は使いません。</li>
+        <li><strong>LED_BUILTIN：</strong> オンボードLEDにつながっているピンを表す名前。</li>
+        <li><strong>pinMode（ピンモード）：</strong> ピンを「出力」や「入力」のどちらで使うかを決める関数。</li>
+        <li><strong>OUTPUT（アウトプット）：</strong> ピンから信号を出す（出力する）設定。</li>
+        <li><strong>digitalWrite（デジタルライト）：</strong> ピンを HIGH（高い）か LOW（低い）に切り替える関数。</li>
+        <li><strong>HIGH / LOW：</strong> デジタル信号の2つの状態。多くのボードでは HIGH で点灯、LOW で消灯です。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>ここまでの基礎編では、おもにシリアルモニタ（画面の文字）でプログラムの動きを見てきました。今回は、プログラムの結果が<strong>実物の光</strong>として見える回です。</p>
+    <p>朝の会（<code>setup</code>）で「このピンは出力用だよ」と申し送りし、授業（<code>loop</code>）で点灯→待つ→消灯→待つ、をくり返します。待つには、第3回で学んだ <code>delay</code> を使います。</p>
+    <p><strong>注意：</strong> ボードの種類によって、オンボードLEDの場所や、HIGHで点くかLOWで点くかが違うことがあります。この講座では、Arduino Uno / Nano 系（多くの場合 HIGH で点灯）を想定します。光らないときはボードの説明も確認してください。</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="../../guides/code-basics.html">インデントとカッコのルールを確認</a></p>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。ボードとポートが合っているかも確認します。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。画面の下の方に「コンパイル完了」と出れば、間違いがないという証拠です！</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p>隣にある<strong>「右矢印（➔）のボタン」</strong>をクリックします。「書き込みが完了しました」と出るまで少し待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / 確認</span>
+            <div class="step-title">本体のLEDを見る</div>
+            <p>シリアルモニタは開かなくても大丈夫です。Arduino本体の小さなLEDが、およそ1秒ごとに点いたり消えたりするか見てください。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>オンボードLEDが、およそ1秒点灯・1秒消灯をくり返したら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>void setup() { ... }</code></strong><br>朝の会。LED用ピンの準備を1回だけします。</li>
+        <li><strong><code>pinMode(LED_BUILTIN, OUTPUT);</code></strong><br><code>LED_BUILTIN</code> のピンを「出力（OUTPUT）」に設定します。まるカッコの中が、わたす材料です。</li>
+        <li><strong><code>void loop() { ... }</code></strong><br>授業。点滅のくり返しはここで行います。</li>
+        <li><strong><code>digitalWrite(LED_BUILTIN, HIGH);</code></strong><br>ピンを HIGH にします（多くのボードでは点灯）。</li>
+        <li><strong><code>delay(1000);</code></strong><br>1000ミリ秒（1秒）待ちます。</li>
+        <li><strong><code>digitalWrite(LED_BUILTIN, LOW);</code></strong><br>ピンを LOW にします（多くのボードでは消灯）。</li>
+        <li><strong><code>;</code> と <code>{ }</code></strong><br>処理の区切りと、関数の範囲です。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p>2つの <code>delay(1000);</code> を <strong><code>delay(200);</code></strong> に変えて、もっと速い点滅になるか確かめてみましょう。終わったら、目にやさしい速さに戻すのも大切です。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もしうまく動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>ボードとポートは合っていますか？</strong><br>
+            書き込みできていないと、古いプログラムのまま動いていることがあります。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong><code>LED_BUILTIN</code> のつづりは合っていますか？</strong><br>
+            大文字・小文字をまちがえると動きません。半角英数字で書いてください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong>見ているLEDはオンボードLEDですか？</strong><br>
+            電源ランプ（常時点灯）とまちがえないように、点滅している小さなLEDを探してください。ボードによっては場所が違います。
+        </div>
+    </div>
+
+    <p class="lesson-end">
+        第13回のレッスンはここまでです。おつかれさまでした！
+    </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="lesson012.html">← 第12回へ</a>
+        <a href="../../index.html">HOME</a>
+        <a href="lesson014.html">第14回へ →</a>
+    </nav>
+
+
+    <section class="comment-box">
+        <p><strong>ご意見・改善要望</strong></p>
+        <p>匿名でコメントを送れます。サイトには掲載せず、管理者だけが確認します。個別の返信は行いません。</p>
+        <p><a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">匿名でコメントを送る</a></p>
+    </section>
+
+</body>
+</html>

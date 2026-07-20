@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基礎編 第14回 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <a href="../../index.html#basic-course">基礎編</a>
+        <span aria-hidden="true">›</span>
+        <span>第14回</span>
+    </nav>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    
+    <h2>基礎編 第14回：LEDの点滅を画面でも見よう（シリアルモニタ／プロッタ）</h2>
+
+    <h3>1. テーマ</h3>
+    <p>第13回と同じオンボードLEDの点滅に加えて、点灯・消灯の状態をシリアルモニタとシリアルプロッタにも送り、光と画面の両方で動きを確認します。</p>
+
+    <h3>2. 今回覚えること</h3>
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>ここに出てくる言葉は、このあとの説明やこれからのレッスンで何度も登場します。だから、<strong>今は「へぇ、そんな名前の言葉があるんだな」と眺めるだけで、完全に覚えられなくても全然大丈夫</strong>です！安心して進めてくださいね。</p>
+    </div>
+    <ul>
+        <li><strong>状態の数値化：</strong> 点灯を <code>1</code>、消灯を <code>0</code> のように数字で表すこと。</li>
+        <li><strong>Serial.println（シリアル・プリントエルエヌ）：</strong> 値を1行ずつパソコンへ送る関数（これまでもメッセージ表示で使いました）。</li>
+        <li><strong>シリアルプロッタ：</strong> 送られてきた数字をグラフ（波形）で見せる画面。</li>
+    </ul>
+
+    <h3>3. 事前解説</h3>
+    <p>第13回では、LEDの光そのものを見ました。今回は、その<strong>同じ切り替え</strong>を数字にしてパソコンへ送ります。</p>
+    <p>シリアルモニタでは <code>1</code> と <code>0</code> が交互に出ます。シリアルプロッタでは、その数字が山と谷のような波形になります。「実物の光」と「画面の数字／波」が同じリズムで動くことを確かめましょう。</p>
+    <p>まずモニタで文字を確認し、次にプロッタで波形を見る順がおすすめです。モニタとプロッタは同時に開けないことが多いので、片方を閉じてからもう片方を開いてください。</p>
+
+    <h3>4. コード（プログラム）</h3>
+    <p class="basics-link">初めての方・途中から始める方へ：<a href="../../guides/code-basics.html">インデントとカッコのルールを確認</a></p>
+    <p>下のアルファベットと記号を、パソコンの画面にそのまま打ち込んでみましょう。</p>
+<pre><code>void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  Serial.println(1);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  Serial.println(0);
+  delay(1000);
+}</code></pre>
+
+    <h3>5. 動かし方（手順）</h3>
+    <p>入力したプログラムを、実際に動かしてみましょう！</p>
+    
+    <div class="step-list">
+        <div class="step-item">
+            <span class="step-badge">手順 1 / 準備</span>
+            <div class="step-title">Arduinoをパソコンにつなぐ</div>
+            <p>USBケーブルを使って、Arduinoとパソコンをしっかりとつなぎます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 2 / チェック</span>
+            <div class="step-title">チェックボタン（検証）を押す</div>
+            <p>画面の左上にある<strong>「レ点（✓）のボタン」</strong>をクリックします。「コンパイル完了」を確認します。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 3 / 書き込み</span>
+            <div class="step-title">矢印ボタン（書き込み）を押す</div>
+            <p><strong>「右矢印（➔）のボタン」</strong>で書き込み、「書き込みが完了しました」を待ちます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 4 / モニタ</span>
+            <div class="step-title">シリアルモニタを開く</div>
+            <p>右上の<strong>シリアルモニタ</strong>（または <strong>ツール</strong> → <strong>シリアルモニタ</strong>）を開き、通信速度が <strong>9600 baud</strong> になっているか確認します。本体LEDの点滅とあわせて、<code>1</code> と <code>0</code> が交互に出るか見ます。</p>
+        </div>
+        <div class="step-item">
+            <span class="step-badge">手順 5 / プロッタ</span>
+            <div class="step-title">シリアルプロッタを開く</div>
+            <p>シリアルモニタを閉じ、右上の<strong>シリアルプロッタ</strong>（または <strong>ツール</strong> → <strong>シリアルプロッタ</strong>）を開きます。同じリズムで上下する波形が出るか確認します。</p>
+        </div>
+    </div>
+
+    <div class="hint-box">
+        <strong>🔍 確認しよう：</strong>
+        <p>LEDの点滅と同じタイミングで、モニタに <code>1</code>/<code>0</code> が出て、プロッタでも波がくり返されたら大成功です！</p>
+    </div>
+
+    <h3>6. コード解説</h3>
+    <ul>
+        <li><strong><code>pinMode(LED_BUILTIN, OUTPUT);</code></strong><br>第13回と同じく、オンボードLED用ピンを出力にします。</li>
+        <li><strong><code>Serial.begin(9600);</code></strong><br>パソコンと通信する準備です。モニタ／プロッタの速さも 9600 に合わせます。</li>
+        <li><strong><code>digitalWrite(LED_BUILTIN, HIGH);</code></strong><br>LEDを点灯側にします。</li>
+        <li><strong><code>Serial.println(1);</code></strong><br>点灯を表す数字 <code>1</code> を1行送ります。プロッタはこの数字をグラフにします。</li>
+        <li><strong><code>delay(1000);</code></strong><br>1秒待ちます。</li>
+        <li><strong><code>digitalWrite(LED_BUILTIN, LOW);</code></strong><br>LEDを消灯側にします。</li>
+        <li><strong><code>Serial.println(0);</code></strong><br>消灯を表す数字 <code>0</code> を1行送ります。</li>
+        <li><strong><code>void loop()</code></strong><br>点灯と消灯のセットを、授業としてくり返します。</li>
+    </ul>
+
+    <h3>7. 練習問題</h3>
+    <p><code>Serial.println(1);</code> と <code>Serial.println(0);</code> の数字を入れ替えて（点灯時に <code>0</code>、消灯時に <code>1</code>）、プロッタの波形がどう変わるか観察してみましょう。終わったら元に戻すのも大切です。</p>
+
+    <h3>8. うまく動かないとき（エラー）のアクション</h3>
+    <p>もしうまく動かない場合は、あわてずに以下の 3つのポイント を手元と見比べて、直してみましょう。</p>
+    
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>通信速度は 9600 ですか？</strong><br>
+            モニタ／プロッタの右下付近で <code>9600 baud</code> になっているか確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>モニタとプロッタを同時に開いていませんか？</strong><br>
+            片方を閉じてから、もう片方を開き直してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong>送っているのは数字だけですか？</strong><br>
+            プロッタは、余分な文字が多いと波形が見づらくなります。まずはこのレッスンのコードのまま試してください。
+        </div>
+    </div>
+
+    <p class="lesson-end">
+        第14回のレッスンはここまでです。基礎編おつかれさまでした！
+    </p>
+    <nav class="lesson-nav" aria-label="レッスン移動">
+        <a href="lesson013.html">← 第13回へ</a>
+        <a href="../../index.html">HOME</a>
+    </nav>
+
+
+    <section class="comment-box">
+        <p><strong>ご意見・改善要望</strong></p>
+        <p>匿名でコメントを送れます。サイトには掲載せず、管理者だけが確認します。個別の返信は行いません。</p>
+        <p><a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">匿名でコメントを送る</a></p>
+    </section>
+
+</body>
+</html>
