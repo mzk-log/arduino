@@ -60,6 +60,10 @@ text/
 │     └─ lesson001.html ～ lesson012.html
 ├─ guides/
 │  └─ code-basics.html
+├─ start/
+│  └─ setup.html
+├─ assets/
+│  └─ images/
 ├─ README.md
 └─ LICENSE
 ```

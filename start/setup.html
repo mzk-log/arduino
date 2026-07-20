@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>はじめる前の準備 - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <nav class="breadcrumb" aria-label="現在位置">
+        <a href="../index.html">HOME</a>
+        <span aria-hidden="true">›</span>
+        <span>はじめる前の準備</span>
+    </nav>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    <h2>はじめる前の準備</h2>
+    <p>基礎編を始める前に、パソコンへのソフト準備とArduino本体の接続を確認します。このページはたたき台です。画面キャプチャを追加しながら完成させます。</p>
+
+    <div class="hint-box">
+        <strong>このページの前提：</strong>
+        <p>パソコンはWindows、Arduino基板はUno系、ソフトはArduino IDE 2系を想定しています。別環境の場合は表記を調整してください。</p>
+        <p>このページの情報・画面キャプチャは、<strong>2026年7月19日時点</strong>（Arduino IDE 2.3.10／Windows）のものです。Arduino側の更新により、表示や手順が変わる場合があります。</p>
+    </div>
+
+    <h3>1. 用意するもの</h3>
+    <ul>
+        <li>パソコン（Windows推奨・この原稿の想定）</li>
+        <li>Arduino本体（例：Uno）</li>
+        <li>USBケーブル（データ通信できるもの）</li>
+        <li>インターネット接続（インストール時）</li>
+    </ul>
+
+    <h3>2. Arduino IDEをインストールする</h3>
+    <p>公式サイトからArduino IDEをダウンロードし、パソコンにインストールします。次の3つのまとまりで進めます。</p>
+
+    <h4>2-1. ダウンロードする</h4>
+    <ol>
+        <li>公式のダウンロードページ（<a href="https://www.arduino.cc/en/software/" target="_blank" rel="noopener noreferrer">https://www.arduino.cc/en/software/</a>）を開く</li>
+        <li>Windows用を選んでダウンロードする（例：Windows Win 10 or newer 64-bit）</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>公式ダウンロードページで、Windows用を選ぶ画面</figcaption>
+        <img src="../assets/images/start/01-ide-download.png" alt="Arduino公式サイトでArduino IDE 2のWindows用を選ぶ画面">
+    </figure>
+
+    <h4>2-2. インストールする</h4>
+    <ol>
+        <li>ダウンロードしたインストーラーを起動する<br>
+            例：<code>arduino-ide_2.3.10_Windows_64bit.exe</code>（バージョンによりファイル名は変わります）</li>
+        <li>確認画面が出たら、発行元と公式サイトから取得したファイルかを確認する</li>
+        <li>使用許諾契約の画面で「同意する」を選ぶ</li>
+        <li>インストール先の選択では、通常は「現在のユーザーのみにインストールする」を選ぶ<br>
+            ※パソコンを複数人で使う場合は、状況に合わせて選んでください</li>
+        <li>「次へ」を押す</li>
+        <li>「インストール」を押す</li>
+        <li>完了画面で、続けて起動するなら「Arduino IDEを実行」にチェックを入れたまま「完了」を押す<br>
+            ※あとで起動する場合は、チェックを外して「完了」を押します</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>インストール完了画面で「Arduino IDEを実行」にチェックが入っていることを確認する</figcaption>
+        <img src="../assets/images/start/02-ide-install.png" alt="Arduino IDEのインストール完了画面。「Arduino IDEを実行」にチェックが入っている">
+    </figure>
+
+    <h4>2-3. 初めて起動する</h4>
+    <ol>
+        <li>Arduino IDEを起動できることを確認する</li>
+        <li>初めて開いた画面の様子を確認する</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>初めて起動した直後のArduino IDE全体</figcaption>
+        <img src="../assets/images/start/03-ide-first-launch.png" alt="初めて起動した直後のArduino IDE全体。英語メニューと空のスケッチが表示されている">
+    </figure>
+
+    <h4>2-4. 日本語表示にする</h4>
+    <p>このあとの操作が分かりやすいよう、メニューを日本語に切り替えます。初めて起動した直後は英語表示のことが多いです。</p>
+    <ol>
+        <li>メニューから <strong>File</strong> → <strong>Preferences</strong> を開く<br>
+            （日本語表示になっている場合は <strong>ファイル</strong> → <strong>基本設定</strong>）</li>
+        <li><strong>Language</strong>（言語）で <strong>日本語</strong> を選ぶ</li>
+        <li><strong>OK</strong> を押す</li>
+        <li>Arduino IDEをいったん終了し、もう一度起動する</li>
+        <li>メニューが日本語（ファイル、編集、スケッチ など）になっていることを確認する</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>Preferences（基本設定）で Language を「日本語」にし、OKを押す</figcaption>
+        <img src="../assets/images/start/04-ide-language.png" alt="Arduino IDEのPreferences画面。Languageが日本語、OKボタンが赤枠で示されている">
+    </figure>
+
+    <h3>3. Arduino本体をパソコンにつなぐ</h3>
+    <p>USBケーブルでArduinoとパソコンをつなぎます。電源ランプが点灯することを確認してください。</p>
+    <figure class="shot-placeholder">
+        <p><strong>画像予定：</strong><code>assets/images/start/05-board-usb-connect.jpg</code></p>
+        <p>Arduino本体とUSBケーブル接続の実物写真（机の上など）※後日追加</p>
+    </figure>
+
+    <h3>4. ボードとポートを選ぶ</h3>
+    <p>Arduino IDEで、使っている基板の種類と接続ポートを選びます。（ここからは日本語メニュー想定）</p>
+    <ol>
+        <li>上部の「ボードを選択」から「他のボードとポートを選択…」を開く</li>
+        <li>ボード名を検索して選ぶ（例：Arduino Nano）</li>
+        <li>右の一覧からポート（例：COM4）を選ぶ</li>
+        <li>OKを押す</li>
+        <li>必要なら <strong>ツール</strong> → <strong>ポート</strong> でも、選んだポートにチェックが付いていることを確認する</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>「他のボードとポートを選択」でボードとポートを選ぶ</figcaption>
+        <img src="../assets/images/start/06-board-select.png" alt="他のボードとポートを選択画面。Arduino NanoとCOM4を選び、OKを押すところ">
+    </figure>
+    <figure class="shot">
+        <figcaption>ツール → ポート で、接続ポートを確認・変更する</figcaption>
+        <img src="../assets/images/start/07-port-select.png" alt="ツールメニューのポートからCOM4を選んでいる画面">
+    </figure>
+
+    <h3>5. サンプルを書き込んでみる</h3>
+    <p>最初の確認として、LED点滅（Blink）などのサンプルをArduinoへ書き込みます。</p>
+    <ol>
+        <li><strong>ファイル</strong> → <strong>スケッチ例</strong> → <strong>01.Basics</strong> → <strong>Blink</strong> を開く</li>
+        <li>チェック（検証）を行う</li>
+        <li>矢印ボタンで書き込む</li>
+        <li>「書き込みが完了しました」などを確認する</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>サンプル「Blink」を開き、書き込み（→）ボタンを押す</figcaption>
+        <img src="../assets/images/start/08-open-blink.png" alt="Blink.inoを開いたArduino IDE。上部の書き込みボタンが示されている">
+    </figure>
+    <figure class="shot">
+        <figcaption>書き込みが終わると「書き込み完了」と表示される</figcaption>
+        <img src="../assets/images/start/09-upload-done.png" alt="書き込みボタンと、画面右下の書き込み完了の通知が赤枠で示されている画面">
+    </figure>
+    <figure class="shot-placeholder">
+        <p><strong>画像予定：</strong><code>assets/images/start/10-blink-led.jpg</code></p>
+        <p>オンボードLEDが点滅している実物写真（任意）</p>
+    </figure>
+
+    <h3>6. シリアルモニタを開く</h3>
+    <p>基礎編では、パソコン画面に文字を出す「シリアルモニタ」を使います。開き方を確認しておきましょう。</p>
+    <ol>
+        <li>画面右上の <strong>シリアルモニタ</strong> を押す（または <strong>ツール</strong> → <strong>シリアルモニタ</strong>）</li>
+        <li>下に「シリアルモニタ」パネルが開くことを確認する</li>
+    </ol>
+    <figure class="shot">
+        <figcaption>シリアルモニタを開いた画面（下のパネル）</figcaption>
+        <img src="../assets/images/start/11-serial-monitor.png" alt="Arduino IDEでシリアルモニタパネルが開き、タブ名が示されている画面">
+    </figure>
+
+    <h3>7. うまくいかないとき</h3>
+    <div class="error-list">
+        <div class="error-item">
+            <span class="error-num">1.</span> <strong>ポートが見つからない</strong><br>
+            USBケーブルが「充電専用」ではないか、差し直し、別のUSB口を試してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">2.</span> <strong>書き込みに失敗する</strong><br>
+            ボード名が本体と合っているか、ポートが正しいかを再確認してください。
+        </div>
+        <div class="error-item">
+            <span class="error-num">3.</span> <strong>IDEが起動しない／インストールできない</strong><br>
+            管理者権限やウイルス対策ソフトの影響がないか、公式の手順をもう一度確認してください。
+        </div>
+    </div>
+
+    <p class="lesson-end">準備ができたら、基礎編の第1回へ進みましょう。</p>
+    <nav class="lesson-nav" aria-label="ページ移動">
+        <a href="../index.html">HOME</a>
+        <a href="../lessons/basic/lesson001.html">基礎編 第1回へ →</a>
+    </nav>
+
+    <section class="comment-box">
+        <p><strong>ご意見・改善要望</strong></p>
+        <p>匿名でコメントを送れます。サイトには掲載せず、管理者だけが確認します。個別の返信は行いません。</p>
+        <p><a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">匿名でコメントを送る</a></p>
+    </section>
+
+</body>
+</html>
+
