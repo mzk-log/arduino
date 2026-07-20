@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データ型を知ろう - 小・中学生のためのArduinoプログラミング講座</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <h1>小・中学生のためのArduinoプログラミング講座</h1>
+    <h2>データ型を知ろう</h2>
+    <p>変数という「箱」には、入れるデータの種類に合わせた<strong>型（かた）</strong>があります。基礎編でよく使う型を整理します。</p>
+
+    <div class="intro-box">
+        <strong>💡 はじめに読むミニ知識：</strong>
+        <p>全部を暗記する必要はありません。<strong>「数字用」「1文字用」「結果を返さない」</strong>くらいの違いが分かれば大丈夫です。くわしく調べたくなったら、<a href="reference-lookup.html">リファレンスで調べよう</a>へ進みましょう。</p>
+    </div>
+
+    <h3>1. 型ってなに？</h3>
+    <p>箱（変数）を作るとき、コンピューターに「この箱にはどんな種類のデータを入れる予定？」と伝えます。その種類の名前が<strong>データ型</strong>です。</p>
+    <p>例：</p>
+<pre><code>int score = 0;
+char c = '1';</code></pre>
+    <p><code>int</code> は「整数を入れる箱」、<code>char</code> は「1文字を入れる箱」という意味です。</p>
+
+    <h3>2. 基礎編でよく使う型</h3>
+
+    <h4><code>int</code>（イント）</h4>
+    <ul>
+        <li><strong>何を入れられる？</strong> 整数（小数点のない数）。例：<code>0</code>、<code>12</code>、<code>-3</code></li>
+        <li><strong>どんなときに使う？</strong> 得点、回数、待ち時間の計算など、数を数えたり比べたりするとき</li>
+        <li><strong>基礎編の例：</strong> 第4回以降の変数、<code>score</code> など</li>
+    </ul>
+    <div class="hint-box">
+        <strong>補足（Arduino Uno / Nano など）：</strong>
+        <p><code>int</code> はだいたい −32768〜32767 の整数を入れられます。もっと大きな数が必要なら、あとで <code>long</code> などを学びます。</p>
+    </div>
+
+    <h4><code>char</code>（チャー／キャラ）</h4>
+    <ul>
+        <li><strong>何を入れられる？</strong> 1文字。例：<code>'A'</code>、<code>'1'</code>、<code>'\n'</code>（改行）</li>
+        <li><strong>どんなときに使う？</strong> キーボードから1文字受け取ったときなど</li>
+        <li><strong>基礎編の例：</strong> 第8回以降の <code>Serial.read()</code>、<code>char c = Serial.read();</code></li>
+    </ul>
+    <p>文字は <strong>シングルクォーテーション</strong>（ <code>'</code> ）で囲みます。文章（文字列）の <code>"</code> とはちがいます。</p>
+<pre><code>char c = '1';     // 文字の1
+int n = 1;         // 数字の1</code></pre>
+    <p>見た目は似ていても、<code>'1'</code> と <code>1</code> は別物です。クイズ・ボットでは文字の番号と比べています。</p>
+
+    <h4><code>void</code>（ボイド）</h4>
+    <ul>
+        <li><strong>意味：</strong> 「空っぽ（結果を返さない）」</li>
+        <li><strong>どんなときに使う？</strong> <code>setup</code> や <code>loop</code> のように、仕事をするだけで値を返さない関数の頭につける</li>
+    </ul>
+    <p><code>void</code> は変数の箱というより、「この関数は答えを返さないよ」という印です。</p>
+
+    <h3>3. くらべてみよう</h3>
+    <ul>
+        <li><code>int</code> … <strong>数</strong>を入れる（計算・カウント向き）</li>
+        <li><code>char</code> … <strong>1文字</strong>を入れる（キー入力向き）</li>
+        <li><code>void</code> … 関数が<strong>結果を返さない</strong>ときの印</li>
+    </ul>
+
+    <h3>4. これから出会うかもしれない型（参考）</h3>
+    <p>今は名前だけ知っておけば十分です。</p>
+    <ul>
+        <li><strong><code>bool</code></strong> … 真（true）か偽（false）だけ</li>
+        <li><strong><code>float</code></strong> … 小数のある数</li>
+        <li><strong><code>long</code></strong> … <code>int</code> より大きな整数</li>
+        <li><strong><code>String</code></strong> … 複数の文字をつなげた文章（扱い方が少し特別）</li>
+    </ul>
+
+    <h3>5. 迷ったときのコツ</h3>
+    <ul>
+        <li>数えたい・計算したい → まず <code>int</code></li>
+        <li>キーボードの1文字 → <code>char</code></li>
+        <li><code>setup</code> / <code>loop</code> → 頭は <code>void</code></li>
+    </ul>
+
+    <nav class="lesson-nav" aria-label="ページ移動">
+        <a href="javascript:history.back()">← 戻る</a>
+        <a href="../index.html">HOME</a>
+        <a href="reference-lookup.html">リファレンスで調べよう →</a>
+    </nav>
+
+
+    <section class="comment-box">
+        <p><strong>ご意見・改善要望</strong></p>
+        <p>匿名でコメントを送れます。サイトには掲載せず、管理者だけが確認します。個別の返信は行いません。</p>
+        <p><a class="comment-btn" href="https://forms.gle/nNGZbQmvsHHmW39p8" target="_blank" rel="noopener noreferrer">匿名でコメントを送る</a></p>
+    </section>
+
+</body>
+</html>

@@ -16,19 +16,24 @@
 
     <h1>小・中学生のためのArduinoプログラミング講座</h1>
     <h2>はじめる前の準備</h2>
-    <p>基礎編を始める前に、パソコンへのソフト準備とArduino本体の接続を確認します。このページはたたき台です。画面キャプチャを追加しながら完成させます。</p>
+    <p>基礎編を始める前に、パソコンへのソフト準備とArduino本体の接続を確認します。USB接続の実物写真など、一部の画像は後日追加します。</p>
 
     <div class="hint-box">
         <strong>このページの前提：</strong>
-        <p>パソコンはWindows、Arduino基板はUno系、ソフトはArduino IDE 2系を想定しています。別環境の場合は表記を調整してください。</p>
+        <p>パソコンはWindows、ソフトはArduino IDE 2系を想定しています。基板はこの講座では <strong>Arduino Nano</strong> を標準とします（理由は次の囲み）。別のボードでも進められますが、ボード選択の画面例は Nano です。</p>
         <p>このページの情報・画面キャプチャは、<strong>2026年7月19日時点</strong>（Arduino IDE 2.3.10／Windows）のものです。Arduino側の更新により、表示や手順が変わる場合があります。</p>
+    </div>
+
+    <div class="intro-box">
+        <strong>なぜ Arduino Nano なの？</strong>
+        <p>Amazonなどで<strong>1000円未満</strong>から手に入りやすく、少ない費用で始めやすいからです（価格は時期や出品者により変わります）。すでに Uno などがある場合も、ボード名を自分の基板に合わせて選べば同じ考え方で学習できます。</p>
     </div>
 
     <h3>1. 用意するもの</h3>
     <ul>
-        <li>パソコン（Windows推奨・この原稿の想定）</li>
-        <li>Arduino本体（例：Uno）</li>
-        <li>USBケーブル（データ通信できるもの）</li>
+        <li>パソコン（Windows推奨・このページの想定）</li>
+        <li>Arduino本体（この講座の標準：<strong>Arduino Nano</strong>）</li>
+        <li>USBケーブル（データ通信できるもの。充電専用は不可）</li>
         <li>インターネット接続（インストール時）</li>
     </ul>
 
@@ -99,7 +104,7 @@
     <p>Arduino IDEで、使っている基板の種類と接続ポートを選びます。（ここからは日本語メニュー想定）</p>
     <ol>
         <li>上部の「ボードを選択」から「他のボードとポートを選択…」を開く</li>
-        <li>ボード名を検索して選ぶ（例：Arduino Nano）</li>
+        <li>ボード名を検索して選ぶ（この講座では <strong>Arduino Nano</strong>）</li>
         <li>右の一覧からポート（例：COM4）を選ぶ</li>
         <li>OKを押す</li>
         <li>必要なら <strong>ツール</strong> → <strong>ポート</strong> でも、選んだポートにチェックが付いていることを確認する</li>
@@ -120,6 +125,7 @@
         <li>チェック（検証）を行う</li>
         <li>矢印ボタンで書き込む</li>
         <li>「書き込みが完了しました」などを確認する</li>
+        <li>Arduino本体の小さなLED（オンボードLED）を見て、点滅を確認する</li>
     </ol>
     <figure class="shot">
         <figcaption>サンプル「Blink」を開き、書き込み（→）ボタンを押す</figcaption>
@@ -129,10 +135,10 @@
         <figcaption>書き込みが終わると「書き込み完了」と表示される</figcaption>
         <img src="../assets/images/start/09-upload-done.png" alt="書き込みボタンと、画面右下の書き込み完了の通知が赤枠で示されている画面">
     </figure>
-    <figure class="shot-placeholder">
-        <p><strong>画像予定：</strong><code>assets/images/start/10-blink-led.jpg</code></p>
-        <p>オンボードLEDが点滅している実物写真（任意）</p>
-    </figure>
+    <div class="hint-box">
+        <strong>🔍 確認しよう（写真では分からないので、目で見てください）：</strong>
+        <p>標準の Blink は、およそ<strong>1秒点灯 → 1秒消灯</strong>をくり返します。スマホの時計や「いち、に…」と数えて、だいたい1秒間隔で切り替わるか確かめてください。電源ランプ（常時点灯）とまちがえないように、点滅している小さなLEDを探しましょう。</p>
+    </div>
 
     <h3>6. シリアルモニタを開く</h3>
     <p>基礎編では、パソコン画面に文字を出す「シリアルモニタ」を使います。開き方を確認しておきましょう。</p>
@@ -153,7 +159,7 @@
         </div>
         <div class="error-item">
             <span class="error-num">2.</span> <strong>書き込みに失敗する</strong><br>
-            ボード名が本体と合っているか、ポートが正しいかを再確認してください。
+            ボード名が本体と合っているか（この講座では Arduino Nano）、ポートが正しいかを再確認してください。書き込み装置（Processor）が違う場合もあるので、<strong>ツール</strong> → <strong>Processor</strong>（例：ATmega328P）も見てみましょう。
         </div>
         <div class="error-item">
             <span class="error-num">3.</span> <strong>IDEが起動しない／インストールできない</strong><br>
