@@ -257,6 +257,20 @@ pre code {
 .comment-box p:last-child {
     margin-bottom: 0;
 }
+.site-footer {
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}
+.site-footer a {
+    color: #055a8c;
+}
+.site-footer p {
+    margin: 0;
+}
 .comment-btn {
     display: inline-block;
     margin-top: 6px;

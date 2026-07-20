@@ -1,6 +1,6 @@
 # 小・中学生のためのArduinoプログラミング講座
 
-パソコンとArduino本体だけで学べる、小・中学生向けのプログラミング入門教材です。現在は基礎編（全12回）を公開しています。ブレッドボードなどの外部パーツは使わず、Arduinoとパソコンの「シリアルモニタ」だけで完結します。
+パソコンとArduino本体で学べる、小・中学生向けのプログラミング入門教材です。基礎編（全14回）を公開しています。ブレッドボードなどの外部パーツは使わず、シリアルモニタを中心に学び、後半ではオンボードLEDやシリアルプロッタも扱います。
 
 ## 公開サイト
 
@@ -13,13 +13,19 @@ https://mzk-log.github.io/arduino/
 
 ## 動作環境
 
-- Arduino本体（USBでパソコンに接続）
+- Arduino本体（この講座の標準は **Arduino Nano**。Unoなどでも可）
+- USBケーブル（データ通信できるもの）
+- パソコン（準備ページは Windows / Arduino IDE 2系を想定）
 - Arduino IDE
-- シリアルモニタ
+- シリアルモニタ（第14回ではシリアルプロッタも使用）
 
 ## カリキュラム
 
-### 基礎編（公開中・全12回）
+### はじめる前の準備
+
+- [はじめる前の準備](https://mzk-log.github.io/arduino/start/setup.html)（IDEインストール・ボード設定・Blink確認など）
+
+### 基礎編（公開中・全14回）
 
 | 回 | テーマ |
 |----|--------|
@@ -35,19 +41,26 @@ https://mzk-log.github.io/arduino/
 | 第10回 | そうでなければ（ if - else ） |
 | 第11回 | 決まった回数だけ繰り返そう（ for ） |
 | 第12回 | 総合演習「入力で切りかわる「クイズ・ボット」を作ろう」 |
+| 第13回 | Arduino本体のLEDを点滅させよう |
+| 第14回 | LEDの点滅を画面でも見よう（シリアルモニタ／プロッタ） |
 
-### 発展編・準備コンテンツ（準備中）
+### 学習ガイド
 
-- はじめる前の準備（IDEインストール・基板接続など）
-- 発展編（オンボードLED・外部接続）
-- 学習ガイド（データ型・リファレンスの調べ方）
+- コードを書く基本ルール（インデント・カッコ）
+- データ型を知ろう（`int` / `char` など）
+- リファレンスで調べよう
+
+### 発展編
+
+- 外部部品を使う回を準備中です
 
 ## 使い方
 
 1. 公開サイトのトップページ（`index.html`）を開く
-2. 基礎編から学びたい回を選ぶ
-3. はじめての人・途中から始める人は、先に「コードを書く基本ルール」（`guides/code-basics.html`）を読む
-4. 各回のコードをArduino IDEに入力し、シリアルモニタで動作を確認する
+2. 初めての方は「はじめる前の準備」から進む
+3. 基礎編から学びたい回を選ぶ
+4. はじめての人・途中から始める人は、先に「コードを書く基本ルール」を読む
+5. 各回のコードをArduino IDEに入力し、画面やLEDで動作を確認する
 
 ## ファイル構成
 
@@ -55,18 +68,19 @@ https://mzk-log.github.io/arduino/
 text/
 ├─ index.html
 ├─ style.css
-├─ lessons/
-│  └─ basic/
-│     └─ lesson001.html ～ lesson012.html
-├─ guides/
-│  └─ code-basics.html
-├─ start/
-│  └─ setup.html
-├─ assets/
-│  └─ images/
+├─ lessons/basic/     … lesson001.html ～ lesson014.html
+├─ guides/            … code-basics / data-types / reference-lookup
+├─ start/setup.html   … はじめる前の準備
+├─ about/             … 運営者情報・プライバシーポリシー
+├─ assets/images/
 ├─ README.md
 └─ LICENSE
 ```
+
+## サイト情報
+
+- [運営者情報](https://mzk-log.github.io/arduino/about/operator.html)
+- [プライバシーポリシー](https://mzk-log.github.io/arduino/about/privacy.html)
 
 ## コメント（フィードバック）について
 
@@ -88,4 +102,4 @@ text/
 
 なお「Arduino」の名称・ロゴは各権利者に帰属します。本教材の文章とは別に、これらの権利にご配慮ください。
 
-© 2026 mzk-log
+© 2026 mzk
