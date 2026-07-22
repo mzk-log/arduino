@@ -20,22 +20,46 @@
 
     <div class="hint-box">
         <strong>このページの前提：</strong>
-        <p>パソコンはWindows、ソフトはArduino IDE 2系を想定しています。基板はこの講座では <strong>Arduino Nano</strong> を標準とします（理由は次の囲み）。別のボードでも進められますが、ボード選択の画面例は Nano です。</p>
+        <p>パソコンはWindows、ソフトはArduino IDE 2系を想定しています。基板はこの講座では <strong>Arduino Nano（互換品）</strong> を標準とします（理由は次の囲み）。IDEではボード名 <strong>Arduino Nano</strong> を選びますが、本体は Arduino社の正規品でなくても構いません。</p>
         <p>このページの情報・画面キャプチャは、<strong>2026年7月19日時点</strong>（Arduino IDE 2.3.10／Windows）のものです。Arduino側の更新により、表示や手順が変わる場合があります。</p>
     </div>
 
     <div class="intro-box">
         <strong>なぜ Arduino Nano なの？</strong>
-        <p>Amazonなどで<strong>1000円未満</strong>から手に入りやすく、少ない費用で始めやすいからです（価格は時期や出品者により変わります）。すでに Uno などがある場合も、ボード名を自分の基板に合わせて選べば同じ考え方で学習できます。</p>
+        <p>ネットショップなどで<strong>1000円前後</strong>から手に入りやすい互換品があり、少ない費用で始めやすいからです（価格は時期や出品者により変わります）。すでに Uno などがある場合も、ボード名を自分の基板に合わせて選べば同じ考え方で学習できます。</p>
     </div>
 
     <h3>1. 用意するもの</h3>
     <ul>
-        <li>パソコン（Windows推奨・このページの想定）</li>
-        <li>Arduino本体（この講座の標準：<strong>Arduino Nano</strong>）</li>
-        <li>USBケーブル（データ通信できるもの。充電専用は不可）</li>
-        <li>インターネット接続（インストール時）</li>
+        <li>パソコン（Windows推奨）</li>
+        <li><strong>Arduino互換</strong>の開発ボード（この講座の標準：Nano系・ATmega328P想定。IDEでは <strong>Arduino Nano</strong> を選択）</li>
+        <li>USBケーブル（データ通信できるもの。充電専用は不可。参考商品によっては Mini-USB ケーブル付き）</li>
     </ul>
+    <p>※Arduino IDEのダウンロードとインストールには、インターネット接続が必要です。</p>
+
+    <section class="purchase-section" aria-labelledby="purchase-title">
+        <h4 class="purchase-section-title" id="purchase-title">まだ基板を持っていない人へ</h4>
+        <p>この講座で使う基板の<strong>購入例</strong>です。すでに基板がある人は、この部分は読み飛ばして、次の「2. Arduino IDEをインストールする」へ進んでください。</p>
+        <p>下のボタンから、楽天市場の商品ページを開けます。</p>
+        <ul>
+            <li><strong>Arduino社の正規品ではありません。</strong>Arduino互換の基板です</li>
+            <li>Arduino IDE では、ボード名 <strong>Arduino Nano</strong> を選びます</li>
+            <li>この例は Mini-USB ケーブル付きです</li>
+        </ul>
+        <!-- START MoshimoAffiliateEasyLink -->
+        <script type="text/javascript">
+        (function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+        b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+        ||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+        c.getElementById(a)||(d=c.createElement(f),d.src=g,
+        d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+        (window,document,"script","https://dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+        msmaflink({"n":"Arduino Nano 開発ボード V3.0 互換 はんだ付け済 Mini-USBケーブル付 ATmega328P搭載 マイコン インターフェース DIY電子キット 基板 NN328P","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/@0_mall\/funlifestore\/cabinet\/13000","p":["\/nn328p_1.jpg","\/nn328p_2.jpg","\/nn328p_3.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/funlifestore\/org05001\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":2,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/funlifestore\/org05001\/","a_id":5706853,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1}],"eid":"Y5jwf","s":"xs"});
+        </script>
+        <div class="affiliate-widget" id="msmaflink-Y5jwf">リンク</div>
+        <!-- MoshimoAffiliateEasyLink END -->
+        <p class="affiliate-note">※上のリンクは、お店の商品ページへの案内（広告）です。買うかどうかは、保護者の方と相談してください。</p>
+    </section>
 
     <h3>2. Arduino IDEをインストールする</h3>
     <p>公式サイトからArduino IDEをダウンロードし、パソコンにインストールします。次の3つのまとまりで進めます。</p>
@@ -96,15 +120,15 @@
     <h3>3. Arduino本体をパソコンにつなぐ</h3>
     <p>USBケーブルでArduinoとパソコンをつなぎます。電源ランプが点灯することを確認してください。</p>
     <figure class="shot">
-        <figcaption>USBケーブルをつなぎ、電源ランプ（POW）が点灯していることを確認する</figcaption>
-        <img src="../assets/images/start/05-board-usb-connect.jpg" alt="Arduino NanoにUSBケーブルをつなぎ、電源ランプが点灯している様子">
+        <figcaption>Arduino互換品（Nano系）にUSBケーブルをつなぎ、電源ランプ（POW）が点灯していることを確認する</figcaption>
+        <img src="../assets/images/start/05-board-usb-connect.jpg" alt="Arduino互換のNano系基板にUSBケーブルをつなぎ、電源ランプが点灯している様子">
     </figure>
 
     <h3>4. ボードとポートを選ぶ</h3>
     <p>Arduino IDEで、使っている基板の種類と接続ポートを選びます。（ここからは日本語メニュー想定）</p>
     <ol>
         <li>上部の「ボードを選択」から「他のボードとポートを選択…」を開く</li>
-        <li>ボード名を検索して選ぶ（この講座では <strong>Arduino Nano</strong>）</li>
+        <li>ボード名を検索して選ぶ（互換品でも <strong>Arduino Nano</strong> を選ぶ）</li>
         <li>右の一覧からポート（例：COM4）を選ぶ</li>
         <li>OKを押す</li>
         <li>必要なら <strong>ツール</strong> → <strong>ポート</strong> でも、選んだポートにチェックが付いていることを確認する</li>
@@ -159,7 +183,7 @@
         </div>
         <div class="error-item">
             <span class="error-num">2.</span> <strong>書き込みに失敗する</strong><br>
-            ボード名が本体と合っているか（この講座では Arduino Nano）、ポートが正しいかを再確認してください。書き込み装置（Processor）が違う場合もあるので、<strong>ツール</strong> → <strong>Processor</strong>（例：ATmega328P）も見てみましょう。
+            ボード名が本体と合っているか（互換品でも <strong>Arduino Nano</strong>）、ポートが正しいか、<strong>ツール</strong> → <strong>Processor</strong>（例：ATmega328P）が合っているかを再確認してください。
         </div>
         <div class="error-item">
             <span class="error-num">3.</span> <strong>IDEが起動しない／インストールできない</strong><br>

@@ -13,8 +13,8 @@ https://mzk-log.github.io/arduino/
 
 ## 動作環境
 
-- Arduino本体（この講座の標準は **Arduino Nano**。Unoなどでも可）
-- USBケーブル（データ通信できるもの）
+- **Arduino互換**の開発ボード（この講座の標準は **Arduino Nano（互換品）**・ATmega328P想定。IDEでは **Arduino Nano** を選択。Uno などでも可）
+- USBケーブル（データ通信できるもの。参考商品によっては Mini-USB ケーブル付き）
 - パソコン（準備ページは Windows / Arduino IDE 2系を想定）
 - Arduino IDE
 - シリアルモニタ（第14回ではシリアルプロッタも使用）
@@ -81,6 +81,10 @@ text/
 
 - [運営者情報](https://mzk-log.github.io/arduino/about/operator.html)
 - [プライバシーポリシー](https://mzk-log.github.io/arduino/about/privacy.html)
+
+## アフィリエイト・広告について
+
+運営継続のため、商品紹介リンク（Amazonアソシエイト、楽天アフィリエイト（もしもアフィリエイト経由）など）を掲載しています。準備ページの購入例は **Arduino互換品**（正規品ではありません）。詳細は [プライバシーポリシー](https://mzk-log.github.io/arduino/about/privacy.html) を参照してください。
 
 ## コメント（フィードバック）について
 
